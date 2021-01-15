@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-输入数字求阶乘</title>
+</head>
+<body>
+  <script>
+    var num = parseInt(prompt('请输入需要计算阶乘的数'))
+
+    // jiecheng(1) => 1
+    // jiechegn(2) => 2*jiecheng(1)
+    // jiecheng(3) => 3*jiecheng(2)
+    console.log(num);
+
+    function jiecheng(n){
+      if (n == 1) {
+        return 1
+      }else{
+        return n * jiecheng(n-1)
+      }
+    }
+    console.log(jiecheng(num));
+   document.write(jiecheng(num))
+
+
+  </script>
+  
+</body>
+</html>

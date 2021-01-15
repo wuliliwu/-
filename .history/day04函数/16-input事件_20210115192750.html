@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input事件</title>
+  <style>
+    textarea {
+      float: left;
+      width: 200px;
+      height: 100px;
+      overflow-y: scroll;
+      resize: none;
+      outline: none;
+    }
+    
+    
+    #box {
+      margin-left: 100px;
+      float: left;
+      line-height: 100px;
+      text-align: center;
+      width: 400px;
+      color: #fff;
+      height: 100px;
+      border-radius: 10px;
+      background-color: rgb(211, 146, 146);
+    }
+  </style>
+</head>
+<body>
+  <textarea name="" id="txt" cols="30" rows="10"></textarea>
+  <div id="box">
+    现在风平浪静
+  </div>
+  <script>
+    var text = document.getElementById('txt')
+    var box = document.g
+    text.onchange = change
+    function change() {
+      console.log(12);
+      box.innerHTML = '输入框内容发生改变，onchange事件被触发'
+    }
+  </script>
+</body>
+</html>

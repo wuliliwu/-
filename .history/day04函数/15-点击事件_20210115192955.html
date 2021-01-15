@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>点击事件</title>
+  <style>
+    div {
+      line-height: 100px;
+      text-align: center;
+      height: 100px;
+      width: 200px;
+      background-color: skyblue;
+      border-radius: 10px;
+      transition: all 1s;
+    }
+    .addclass {
+      line-height: 100px;
+      text-align: center;
+      height: 100px;
+      width: 400px;
+      color: #fff;
+      background-color: rgb(0, 0, 0);
+      border-radius: 10px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="box" class="">
+    这是一个div
+  </div>
+  <script>
+    var box = document.getElementById('box')
+    box.ondblclick = dbClick;
+
+    function dbClick() {
+      box.innerHTML = '你双击了这个盒子'
+      box.classList.toggle('addclass') 
+    }
+  </script>
+</body>
+</html>
