@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 在js中，只有 空字符串'' ,null undefined 0 NaN 的判断为false
+    console.log(Boolean(123)); //true
+    console.log(Boolean('123'));//true
+    console.log(Boolean(''));//false
+    console.log(Boolean());//false
+    console.log(Boolean(null));//false
+    console.log(Boolean(undefined));//fasle
+    console.log(Boolean([]));//true
+    console.log(Boolean(0));//false
+    console.log(Boolean(Object));
+    console.log(Boolean(NaN));
+  </script>
+</body>
+</html>

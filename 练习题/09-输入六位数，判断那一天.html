@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-输入六位数，判断那一天</title>
+</head>
+<body>
+  <script>
+    var num = 20201231
+    var sum = 0
+    var months =[31,28,31,30,31,30,31,31,30,31,30,31,30]
+    var months1 =[31,29,31,30,31,30,31,31,30,31,30,31,30]
+    if(num.toString().length == 8  && typeof(num) == 'number'){
+     var str = num.toString().split('')
+     var year = str[0] + str[1]+str[2] + str[3]
+     var mon =Number( (str[4] + str[5]))
+
+     var days = str[6] + str[7]
+     if (runYear(year)){
+        for(var i = mon; i>1; i--){
+          sum+=months1[i-2]
+        }
+        sum = sum + Number(days)
+
+     }else {
+      for(var i=mon; i>1; i--){
+          sum+=months[i-2]
+        }
+        sum = sum + Number(days)
+     }
+     console.log('您输入的是'+ year +'年第' + sum +'天');
+     
+    }else{
+      console.log('请重新输入');
+      
+    }
+    function runYear(year) {
+      if((year%4)==0 && (year%100)!==0){
+      return true
+      }else {
+      return false
+      }
+    }
+  </script>
+</body>
+</html>

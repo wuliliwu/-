@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猴子问题</title>
+</head>
+<body>
+    <script>
+        var i //走回去拿香蕉的路程
+        var sum //剩餘的香蕉總數
+        var arr =[]
+        for(var i=1 ;i<=50; i++){
+            sum = (100-parseInt((i/2))) - (50-parseInt((i/6)))
+            if((100-parseInt((i/2)))<=50 && sum >=0){
+                arr.push(sum)
+                console.log(sum);
+            }
+        }
+
+        console.log(Math.max(...arr));
+
+
+    </script>
+</body>
+</html>

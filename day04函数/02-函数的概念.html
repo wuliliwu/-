@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数的概念</title>
+</head>
+<body>
+  <script>
+    /* 
+    函数就是把一段代码放在同一个盒子里
+    两种定义方式：声明式，赋值式
+    声明式的语法，使用function关键字声明一个函数
+    function name() {
+      一段代码
+    }
+
+    赋值式：
+    var namr = function(){
+      一段代码 
+    }
+    */
+    /* 
+    形参和实参的概念
+    形参：就是卸载函数内部定义的变量，但是在函数外部不能使用 
+    实参：调用函数的时候传入
+    实参和形参位置一一对应，多个形参和实参之间用逗号分割
+    函数内部的形参的值，是由函数调用的时候传递决定的
+    
+    */
+
+    /* 
+    函数默认返回的是undefined
+    函数函数内部有个参数，argument参数，默认存储函数所有的参数
+    argument.cellse返回函数本身
+    */
+   function paint(num) {   
+    var str = ''
+    for(var i=1;i<=num;i++){
+      str += '*'
+    }
+    return str
+   }
+   for(var i=1;i<=3;i++){
+    console.log(paint(i));
+   }
+  </script>
+</body>
+</html>

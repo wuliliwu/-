@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-逻辑或逻辑与</title>
+</head>
+<body>
+  <script>
+    // 逻辑与
+    console.log(1 && 0);
+    console.log(1 && 1);
+    console.log(1 && null);
+    console.log(1 && undefined);
+    console.log(0 && null);
+    console.log(0 && undefined);
+    console.log(1>0 && 7);
+    // 逻辑或
+    console.log('----------------------');
+    console.log(1 || 0);
+    console.log(1 || 1);
+    console.log(1 || null);
+    console.log(1 || undefined);
+    console.log(0 || null);
+    console.log(0 || undefined);
+    console.log(1>0 || 7);
+    console.log(1<0 || 7);
+    if (1 && 1) {
+      console.log('这是真的');
+    } else {
+      console.log('这是假的');
+      
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-for of循环</title>
+</head>
+
+<body>
+  <script>
+    /* for...of语句在可迭代对象(包括
+    Array，Map，Set，String,TypedArray，arguments
+     对象等等),上创建一个可迭代循环，调用自定义迭代钩子
+    并为每个不同属性的值执行语句 */
+    // const arr1 = ['a', 'b', 'c']
+    // for (let item of arr1) {
+    //   console.log(item);
+    // }
+
+    // const obj1 = {
+    //   name: '安安',
+    //   age: 19,
+    //   love: '女人'
+    // }
+
+    //报错：obj1不是一个可迭代对象
+    // for(let item of obj1){
+    //   console.log(item);
+    // }
+    var it = makeIterator(['a', 'b']);
+    console.log(it.next());
+    console.log(it.next());
+    console.log(it.next());
+
+    // function makeIterator(array) {
+    //   var nextIndex = 0;
+    //   return {
+    //     next: function () {
+    //       return nextIndex < array.length ? {
+    //         value: array[nextIndex++],
+    //         done: false
+    //       } : {
+    //         value: undefined,
+    //         done: true
+    //       }
+    //     }
+    //   }
+    // }
+    // array = [1,2,3]
+    function makeIterator(array) {
+      var nextIndex = 0;
+      return {
+        next: function () {
+          return nextIndex < array.length ?{
+            value : array[nextIndex++],
+            done : false
+
+          } : {
+            value: undefined,
+            done: true
+          }
+        }
+      }
+    }
+
+    // var a = [1,2,3,4]
+    // var it = a[Symbol.iterator]();
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+
+
+    // var set1 = new Set()
+    // // var set2 = new Set('1','b','c')
+    // set1.add(1).add(2).add(3)
+    // // console.log(set1);
+    // // console.log(set2);
+    // for(let item of set1){
+    //   console.log(item);
+    // }
+
+
+    // var str ='12345'
+    // for(let item of str){
+    //   console.log(item);
+    // }
+    function test(){
+   var foo = 33;
+   if (foo) {
+      let foo = (foo + 55); // ReferenceError
+   }
+}
+test();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-按照月份判断天数</title>
+</head>
+<body>
+  <script>
+    var month = prompt('请输入月份')
+    var months =[31,28,31,30,31,30,31,31,30,31,30,31,30]
+    function test(month) {
+      console.log(month + '月份有' + months[month-1] + '天');
+    }
+    test(month)
+  </script>
+</body>
+</html>

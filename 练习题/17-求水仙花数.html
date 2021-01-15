@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17-求水仙花数</title>
+</head>
+<body>
+  <script>   
+  //   var baiwei
+  //   var shiwei
+  //   var gewei
+
+  //   // 566
+  // for(var i=100 ; i<1000 ;i++){
+  //   baiwei = parseInt(i/100)
+  //   shiwei = parseInt(i/10)%10
+  //   gewei = i%10
+  //   if(Math.pow(baiwei,3)+Math.pow(shiwei,3)+Math.pow(gewei,3) === i){
+  //     console.log(i);
+  //   }
+  // }
+
+  var row = 1
+  var str = ''
+  for (let row = 1; row <= 9; row++) {
+     for (let i = row; i <= 9; i++) {
+    str += row + '*' + i +'='+ row*i + ' '
+    }
+    str += '<br/>'
+  }
+ 
+  document.write(str)
+  // console.log(str);
+    
+  </script>
+</body>
+</html>

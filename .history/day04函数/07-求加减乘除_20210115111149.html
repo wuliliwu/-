@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-求加减乘除</title>
+</head>
+
+<body>
+  <script>
+    // 1.编写一个函数，计算两个数字的和差积商
+    /*  function anan(num1,num2,sign){
+       switch (sign) {
+         case "+" : console.log(num1+num2); break;
+         case "-" : console.log(num1-num2); break;
+         case "*" : console.log(num1*num2); break;
+         case "/" : console.log(num1/num2); break;
+       }
+     }
+     anan(8,2,'*'); */
+
+    // 2. 编写函数，求圆的面积
+    /*  function area(radius) {
+       return Math.PI * radius * radius;
+     }
+     console.log(area(9)); */
+
+    // 编写函数，判断一个字符串的内容是不是纯数字
+
+    // function judge(str){
+    //   if (Number(str)+'' !==  NaN+'' ) {
+    //     console.log('是数字');
+
+    //   }else{
+    //     console.log('不是数字');
+    //   }
+    // }
+    // judge("1235")
+
+    // console.log(Number('12a'));
+
+
+    // 4. 编写一个函数，计算三个数字的大小，按从小到大的顺序输出。
+    // function  size(a,b,c){
+    //   var temp
+    //   if (a>b) {
+    //     temp = b
+    //     b= a
+    //     a = temp
+    //   }
+    //   if (b>c) {
+    //     temp = c
+    //     c = b
+    //     b = temp
+    //   }
+    //   if (a>b) {
+    //     temp = b
+    //     b = a
+    //     a = temp
+    //   }
+
+    //        document.write(a+" "+b+" "+c)
+    //     }
+
+   size(32,8,7,68,858,7,8,1,2,3)
+    function size() {
+      var arr = arguments
+      // console.log(arr);
+      for (var i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            var temp = arr[j]
+            arr[j] = arr[j + 1]
+            arr[j + 1] = temp
+          }
+        }
+      }
+      function bianli(arr){
+        // console.log(arr);
+        var str = ''
+        for (let i = 0; i < arr.length; i++) {
+          str+=arr[i]+' '
+        }
+         console.log(str);
+      }
+      return bianli(arr)
+    }
+
+
+    // console.log(Math.random().toFixed(4).split('.')[1]);
+
+    // 7. 求m-n之间数字的和
+    // function add(m,n) {
+    //   var sum = 0
+    //   if(m>n) {
+    //     for(var i = n ;i<=m;i++)
+    //     sum += i
+    //   }
+    //   if(m<n){
+    //     for(var i=m;i<=n;i++){
+    //       sum += i
+    //     }
+    //   }
+    //   return sum
+    // }
+    // console.log(add(6,7));  
+
+
+
+
+
+    // alert(a)
+    // function a(){
+    //   console.log('我是函数');
+    // }
+    // var a = 2
+    // alert(a)
+
+
+    // 会预解析成
+    // function a(){
+    //   console.log('我是函数');
+    // }
+    // var a
+    // // 在js里面，函数是一等公民，他最大
+    // alert(a)
+    // a=2
+    // alert(a)
+
+
+    // myFun(10,20)
+    // var myFun = function(a,b){
+    //   return a+b
+    // }
+    // 这里只提升变量，不提升赋值式函数，
+
+
+    // 8. 编写函数digit(num, k)，
+    // 函数功能是：求整数num从右边开始的第k位数字的值，
+    // 如果num位数不足k位则返回0。
+
+    console.log(digit(12345,3));
+    // 方法一
+    function digit(num,k){
+      var arr = String(num).split('')
+      // console.log(arr);
+      if (k<=arr.length) {
+        return arr[k-1]
+      }else{
+        return 0
+      }
+    }
+    // 方法二
+    function digit1(num,k){
+      var temp = 0
+      for (let i = 1; i <= k; i++) {
+        temp = 
+        
+      }
+
+    }
+
+    // function compare(a,b,c){
+    //         // 从小到大输出
+    //         // 1 a>=b
+    //         if(a>=b){ // b a
+    //             if(c<=b){
+    //                 // c<=b
+    //                 console.log(c,b,a)
+    //             }else{
+    //                 // c>b
+    //                 if(c>a){
+    //                     console.log(b,a,c)
+    //                 }else{
+    //                     // c<=a
+    //                     console.log(b,c,a)
+    //                 }
+    //             }
+    //         }
+    //         // 2 a<b
+    //         else{  // a b
+    //             if(c<=a){
+    //                 console.log(c,a,b)
+    //             }else{
+    //                 //c>a
+    //                 if(c>b){
+    //                     console.log(a,b,c)
+    //                 }else{
+    //                     // c<=b
+    //                     console.log(a,c,b)
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     compare(23,12,34)
+
+
+
+  </script>
+</body>
+
+</html>

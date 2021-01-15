@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-数值类型的转换</title>
+</head>
+<body>
+  <script>
+    // 1.Number转换成数字
+    // 1)把一个数强制转化成数值
+    // 2)可以转换成小数，会保留小数
+    // 3)可以转换Boolean值
+    // 4)遇到不可转换的返回NaN
+    // var a12
+    console.log(Number('13.4543232'));//13
+    console.log(Number(true));//1
+    console.log(Number("黄"));//NaN
+    console.log(Number(null));//0
+    console.log(Number(Object))//NaN
+    console.log(Number(undefined));//NaN
+    console.log(Number([]));//0
+    console.log(Number(''));//0
+    console.log(Boolean());
+    // console.log(Number(a12));
+    // console.log(Number(12a));
+    
+
+    // console.log(Number());
+
+    // var a = {
+    //   name : 'anna'
+    // }
+    // console.log(typeof a);
+    // console.log(a.name);
+
+
+    // 2.parseInt()
+    // 1)从第一位开始检查，是数字就开始转换，直到不是数字的内容，
+    // 2)如果开头不是数字，直接返回NaN
+    // 3)不认识小数点，只能保留整数
+    // console.log(parseInt(12.4343));
+    // console.log(parseInt('12a'));
+    // console.log(parseInt('a12'));
+
+    // 3.parseFloat()
+    // 1)从第一位开始检查，是数字就开始转换，直到不是数字的内容，
+    // 2)如果开头不是数字，直接返回NaN
+    // 3)只认识第一个小数点，后面的无效
+    // console.log(parseFloat(12.243242343));
+
+    // var str1 = '12.4'
+    // console.log(Number(str1));
+    // var str2 = '12.45.6'
+    // console.log(Number(str2));
+    // console.log(str1 - 0 );
+    // var str3 = '13.2'
+    // 4.字符串转数字类型
+    // console.log(+str3);
+    // console.log(-(-str3));
+    // console.log(str3 * 1);
+    // console.log(str3 - 0);
+    // console.log(str3 / 1);
+    // console.log(str3 % 1);
+
+    // 5.其他数据类型转字符串
+      // 方法---> toString() 括号里面可以填数字，表示转成几进制，
+      // 默认10进制
+    // 有一些数据类型不可以转，如undefined，null
+    // var a = 12
+    // console.log(a.toString());
+    // console.log(null.toString());
+    // console.log(undefined.toString());
+
+    // 方法-->string()
+    // console.log(String(null));
+    // console.log(String(undefined));
+    // console.log(String(123456));
+    // console.log(String(123456ada));
+    // console.log(String(a34));
+
+
+    
+    // 使用 + 号
+    // 加号两边只要有一边是字符串，则两边做拼接
+    // 两边数字做和运算
+    // console.log(12+undefined);
+    // console.log(12+true);
+    // console.log(12+NaN);
+    // console.log(12+'12');
+    // console.log(12+false);
+    // console.log(12+12);
+
+    // 其他转Boolean类型
+    // Boolean
+    // 1.在js中，只有 ""  0 null undefined  NaN这些转换之后是false
+    // console.log(5.5 % 2);
+
+
+
+
+
+  </script>
+</body>
+</html>

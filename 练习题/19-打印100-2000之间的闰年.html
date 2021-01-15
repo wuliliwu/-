@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19-打印100-2000之间的闰年</title>
+</head>
+
+<body>
+  <script>
+    var j = 0
+    var str = ''
+    for (let year = 1000; year <= 2000; year++) {
+      if ((year % 4) == 0 && (year % 100) !== 0) {
+        // console.log(year + '年是闰年');
+        str+=year+' '
+        j++
+      }
+      if(j%4 ===0){
+        str += '\n'
+      }
+    }
+    console.log(str);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-工资循环增长</title>
+</head>
+<body>
+  <script>
+    var slavery = 10000;
+    var sum = 0
+    function count(year) {
+      for(var i=1 ; i<=year ; i++){
+        slavery = slavery + slavery*0.05
+      }
+      return slavery.toFixed(2)
+    }
+    var year = prompt('请输入工作的年限：')
+    alert(count(year)+'元')
+  </script>
+</body>
+</html>

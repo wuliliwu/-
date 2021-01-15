@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-打印星号</title>
+</head>
+<body>
+  <script>
+    // var str= ''
+    // var num = 3
+    // for(let i=1 ; i<=num ; i++){
+    //     str += '*'.repeat(i*2 - 1) + ' ';
+    //     if(i === num){
+    //       for(var j=i-1 ; j>=1 ; j--) {
+    //     str += '*'.repeat(j*2 - 1)+ ' '
+    // }
+    //     }
+    // }
+    // for(var j=2 ; j>=1 ; j--) {
+    //     str += '*'.repeat(j*2 - 1)+ ' '
+    // }
+
+    // document.write(str)
+    // console.log(str);
+    // console.log(Boolean({}));
+    // console.log(Number({}));
+    // console.log(Number(null));
+    // console.log(Number(undefined));
+        // 打印@
+    // for(var i = 1 ; i<=4; i++){
+    //     console.log('@'.repeat(2*i -1));
+    // }
+
+
+    // for(var i=1; i<=4; i++){
+    //   var j = 4;
+    //   console.log(' '.repeat(j-i)+'* '.repeat(i));
+    // }
+    // for(var i=1 ; i<=4 ;i++) {
+    //   var j=4;
+    //   console.log('*'+' '.repeat(j-i)+ '*');
+    // }
+
+      var num = 4
+    for(var i=1; i<=num; i++){        
+      var j = num;
+      if(i===1){
+        console.log(' '.repeat(j)+'✩');
+      }else{
+      console.log(' '.repeat(j-i)+'✩'+' '.repeat((2*i)-2)+'✩');
+      }
+    }
+
+    // var str2 = ''
+    // for (var i=1 ;i<=5 ;i++){
+    //   str2 += '✩ ✩ ✩ ✩ ✩' + '\n'
+    // }
+    // console.log(str2);
+
+
+    //  var  str3 = ''
+    //  for(var j=1;j<=5;j++){
+    //      for(var i=1;i<=j;i++){
+    //     str3+='* '
+    //   }
+    //   str3+='\n'
+    // }
+  
+    // console.log(str3);
+  </script>
+</body>
+</html>

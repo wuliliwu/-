@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript基本语法练习题</title>
+  <style>
+  </style>
+</head>
+<body>
+  <script>
+    //1 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+    // var sum = 89
+    // var days = parseInt(89 / 24)
+    // var hours = (89 % 24)
+    // console.log('共需要'+ days + '天' + hours + '个小时');
+    //2 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+    // 它需要一个程序将华氏温度（80度）转换为摄氏度
+    // 并以华氏度和摄氏度为单位分别显示该温度。
+    // 提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位小数
+    function tem (a) {
+      var b
+      b = (5/9 * (a - 32)).toFixed(3)
+      return b
+    }
+    console.log('现在的温度是' + tem(80));
+
+    var k=-2;
+    console.log(++k,k++);
+
+  </script>
+</body>
+</html>
