@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//     1.定义-一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数;然后按顺序每五个数求出一个平均
+// 值,放在另一个数组中并输出。试编程。
+
+    // var arr = new Array()
+    // for (let i = 2; i <= 60; i++) {
+    //   if (!(i%2)) {
+    //     arr.push(i)
+    //   }
+    // }
+    // // console.log(arr);
+    // var newArr = []
+    // var sum = 0
+    // for (let i = 0; i < arr.length; i++) {
+    //   sum += arr[i]
+    //   if ((i+1)%5 == 0) {
+    //     newArr.push(sum/5);
+    //     sum = 0
+    //   }
+    // }
+    // console.log(newArr);
+
+
+
+//  2.通过循环按执行顺序,做一个5x 5的二维数组,赋1到25的自然数,然后输出该数组的左下半三角。试编
+
+    // var arr1 = []
+    // var arr1in =[]
+    // for (let i = 1; i <= 25; i++) {
+    //   arr1in.push(i)
+    //   if (i%5 == 0) {
+    //     arr1.push(arr1in)
+    //     arr1in=[]
+    //   }
+    // }
+    // console.log(arr1);
+    // document.write('[' + '<br/>')
+    // for (let i = 0; i < arr1.length; i++) {
+    //       console.log(arr1[i]);
+    //      document.write('[')
+    //       document.write(arr1[i]) 
+    //       document.write(']')
+    //       document.write('<br/>')
+    // }
+    // document.write(']')
+
+    // 3.随机生成一个五位以内的数,然后输出该数共有多少位，每位分别是什么
+
+    // var num = parseInt(Math.random()*100000)
+    // num = num.toString().split('')
+    // // console.log(num);
+    // var sum = 0
+    // var str= ''
+    // for (let i = 0; i < num.length; i++) {
+    //  str+=num[i]+' '
+    //   // console.log(num[i]);   
+    //   sum++   
+    // }
+    // console.log(str + '共'+sum+'位');
+
+    // 4.编写函数map(arr)把数组中的每一-位数字都增加30%， 并返回一个新数组
+    // function map(){
+    //   var arr = [2,4,6,8,10]
+    //   let res = arr.map(item => {
+    //     return item+(item*0.3)
+    //   })
+    //  console.log(res);
+    // }
+    // map()
+
+
+    // 5.编写函数has(arr , 60)判断数组中是否存在60这个元素,返回布尔类型
+  //   var arr = [1,2,3,4,5,60]
+  //   function has(arr,num){
+  //     let res = arr.some((item,index) => {
+  //       return item===num
+  //     })
+  //    return res
+  //   }
+  //  console.log( has(arr,60));
+
+  // 1.编写函数norepeat(arr)将数组的重复元素去掉,并返回新的数组
+/* 
+  数组去重方法一:
+  使用一个新数组,在新数组中,选择旧数组的元素,如果有就不理
+  如果没有返回-1,则添加到新数组中  */
+//   function norepeat(arr){
+//     var a = [1,2,3,3,2,4,5]
+//     let newArr = []
+//     for (let i = 0; i < a.length; i++) {
+//       if (newArr.indexOf(a[i]) === -1) {
+//         newArr.push(a[i])
+//     }
+//     }
+//     console.log(newArr);
+// }
+//   norepeat()
+
+// 数组去重方法二:
+// 数组下标判断法
+  function norepeat(arr){
+    var arr = [1,2,3,3,2,4,5]
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+      if (arr.indexOf(arr[i]) === i) {
+        newArr.push(arr[i])
+      }
+    }
+    console.log(newArr);
+}
+
+// i = 0 1(index) === 0
+// i = 1 2(index) === 1
+
+  norepeat()
+
+
+
+
+
+
+
+
+// var arr = [2, 8, 5, 0, 5, 2, 6, 7, 2]
+//   var newArr = []
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr.indexOf(arr[i]) === i) {
+//       newArr.push(arr[i])
+//     }
+//   }
+//   console.log(newArr) // 结果：[2, 8, 5, 0, 6, 7]
+   
+
+    
+
+
+
+
+  </script>
+
+</body>
+</html>

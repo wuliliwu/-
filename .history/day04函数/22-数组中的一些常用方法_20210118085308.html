@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组中的一些常用方法</title>
+</head>
+<body>
+  <script>
+    // var arr = [1,2,3]
+
+    // pop,push方法
+    // arr.push(4)
+    // console.log(arr);
+    // arr.pop()
+    // console.log(arr);
+    // arr.reverse()
+    // console.log(arr);
+
+    // shift方法
+    // arr.shift()
+    // console.log(arr);
+    // arr.unshift(88)
+    // console.log(arr);
+
+    // splice方法
+
+    // var arr = [1,2,3,4,5]
+    // arr.splice(0,2,'anna') //第一位參數是數組的下標,第二個參數是截取的個數
+    // 也就是從這一個下標開始,截取幾個
+    // 第三個參數是截取之後需要替換的內容
+    // arr.splice(1,0,100,200,300)
+    // 這樣子就可以在不改變數組的情況下插入
+
+    // console.log(arr);
+
+    // var arr = [3,5,6,23,6,99]
+    // arr.sort()
+    // console.log(arr);
+    
+    // var arr = [2,'a',4,3,6,1]
+    // arr.reverse()
+    // arr.reverse()
+    // arr.sort()
+    // console.log(arr);
+
+
+    // concat方法
+    // concat方法不會改變原來的數組,而是返回一個新的數組
+    // 原來的數組保持不變
+    // var arr1 = [99,88,77]
+    // var arr1 = arr1.concat(arr)
+    // // console.log(newArr);
+    // console.log(arr);
+    // console.log(arr1);
+
+    /* join方法,就是把裡面的每一項內容連接起來,變成一個字符串
+    可以定義每一項之間的連接內容,拼接好之後返回一個拼接好的字符串
+    join方法不會改變原來的數組 */
+    // var arr = [1,2,4]
+    // var str = arr.join('=')
+    // console.log(str);
+    // var str = arr.join('*')
+    // console.log(str);
+
+    // var arr = [1,2,4]
+    // var str = arr.join('=')
+    // console.log(str);
+/* 
+    用for方法一般來遍歷數組,,按照索引的方式進行遍歷
+    因為對象沒有沒有下標索引,所以沒法用for方法來遍歷對象 */
+
+    // 因此對象有它獨特的方法,for...in
+    // var arr= [1,2,3,4,5,6]
+    // for (let i = 0; i < arr.length; i++) {
+    //   const element = arr[i];
+    //   console.log(element);
+      
+    // }
+
+    // var a = {
+    //   name:'三七安',
+    //   age: 19
+    // }
+    // // 下面使用for...in方法來遍歷
+    // for (const key in a) {
+    //   console.log(key);
+    //   console.log(a[key]);
+    // }
+
+    var a = [1,23,true,'']
+
+    console.log(true);
+    console.log(a[2]);
+    if (a[2]) {
+      console.log(123);
+    }
+
+  </script>
+  
+</body>
+</html>

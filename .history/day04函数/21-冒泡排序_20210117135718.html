@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冒泡排序</title>
+</head>
+<body>
+  <script>
+        // 冒泡排序
+
+    var arr = [4,6,3,7] // arr.length == 4
+    // console.log(arr[5]);
+    for (let i = 0; i <= arr.length-1; i++) {
+      // 第一層循環是躺輸,也就是要走arr.length-1趟才能比較完
+      for (let j = 0; j <= arr.length-i-1; j++) {
+        // 第二層循環是每一趟比較的次數,也就是
+        // 每一輪我們都要比較arr.lenght-i次
+        if (arr[j]<arr[j+1]) {
+          var temp
+          temp = arr[j]
+          arr[j] = arr[j+1]
+          arr[j+1] = temp
+        }
+      }
+    }
+    console.log(arr);
+  </script>
+</body>
+</html>

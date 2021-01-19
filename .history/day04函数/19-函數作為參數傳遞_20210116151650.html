@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19-函數作為參數傳遞</title>
+</head>
+<body>
+  <script>
+
+    // function add(num) {
+    //   return num +10
+    // }
+
+    // function callFunc(a,b){
+    //   return a(b)
+    // }
+    // let res = callFunc(add,10)
+    // console.log(res);
+
+    // function funct(num){
+    //   if (num<=1) {
+    //     return 1
+    //   }else{
+    //     return num * arguments.callee(num-1)
+    //   }
+    // }
+    
+    // let trueFunc = funct;
+    // funct = function() { 
+    //   return 0
+    //  }
+    
+    // console.log(trueFunc);
+    // console.log(funct);
+    // console.log((trueFunc(5)));
+    // console.log(funct(5));
+
+
+    // this問題
+    // function King() {
+    //   this.name = '家輝'
+    //   setTimeout(()=>{
+    //     console.log(this.name);
+    //     console.log(this === window);
+    //   },1000)
+    // }
+    // King()
+    // console.log(window.name);
+
+    var a = 0
+    var obj = {
+      a:2,
+      foo:function(){
+        console.log(this);
+
+        function test(){
+          console.log(this);
+        }
+        test()
+      }
+
+    }
+
+
+  </script>
+</body>
+</html>
