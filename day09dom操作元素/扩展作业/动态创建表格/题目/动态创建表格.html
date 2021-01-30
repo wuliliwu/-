@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				margin-top: 10px;
+				border: 1px solid #ccc;
+				/* width: 400px;
+				height: 100px; */
+				border-collapse: collapse;
+
+			}
+			table td {
+				width: 60px;
+				height: 20px;
+				border: 1px solid #000;
+				/* background-color: red; */
+			}
+		</style>
+	</head>
+	<body>
+		
+		行：<input type="text" id='row' />
+		列：<input type="text" id='col' />
+		<input type="button" value="创建" id="btn"/>
+		<div id="box"></div>
+
+		<script src="../../../../公共方法.js"></script>
+		<script>
+			var row = document.getElementById('row')
+			var col = document.getElementById('col')
+			var btn = document.getElementById('btn')
+			var box = document.getElementById('box')
+			var table = document.createElement('table')
+			var td = table.getElementsByTagName('td')
+			
+			btn.onclick = function() {
+			
+				var str = ''
+					for (let i = 0; i < row.value; i++) {
+						str+='<tr>'
+						for (let j = 0; j < col.value; j++) {
+							str+='<td>'+rand(0,100)+'</td>'
+													
+						}
+						str+='</tr>'
+					}
+			
+				table.innerHTML = str
+				for (let i = 0; i < td.length; i++) {
+					td[i].style.background = color()	
+					
+				}
+				box.appendChild(table)
+
+				var tr = document.getElementsByTagName('tr')
+				// console.log(tr);
+				for (let i = 0; i < tr.length; i++) {
+					var del = document.createElement('button')
+					del.innerText = '删除'
+					tr[i].appendChild(del)
+					tr[i].onclick = function() {
+						this.remove()
+					}
+					
+				}
+				
+			}
+			
+			
+		</script>
+
+	</body>
+</html>

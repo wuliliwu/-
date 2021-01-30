@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>手风琴效果</title>
+  <style>
+    ul {
+      list-style: none
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 1200px;
+      height: 400px;
+      margin: 50px auto;
+      /* border:1px solid red; */
+      overflow: hidden;
+    }
+
+    div li {
+      width: 240px;
+      height: 400px;
+      float: left;
+    }
+
+    div ul {
+      width: 2000px;
+    }
+
+    div ul li img {
+      /* display: inline-block; */
+      height: 100%;
+    }
+
+    #bb {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+
+</head>
+<body>
+  <div width='200px'>
+    <ul id="box">
+
+    </ul>
+  </div>
+  <script>
+    var box = document.getElementById('box')
+    for (let i = 0; i < 5; i++) {
+      var li = document.createElement('li')
+      box.appendChild(li)
+    }
+    var lis = document.getElementsByTagName('li')
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].setAttribute('style', `background: url("./images/${i+1}.jpg");`)
+      lis[i].onmousemove = function (e) {
+        for (let j = 0; j < lis.length; j++) {
+          if (j == i) {
+            SlowAnimation(lis[j], 800)
+          }
+          if (j !== i) {
+            SlowAnimation(lis[j], 100)
+          }
+        }
+        e.stopPropagation()
+      }
+      document.onmouseover = function () {
+        for (let i = 0; i < 5; i++) {
+          SlowAnimation(lis[i], 240)
+
+        }
+      }
+    }
+    // 封装获得属性值的方法
+    function getStyle(obj, attr) {
+      if (obj.currentStyle) {
+        return obj.currentStyle[attr]
+      } else {
+        return window.getComputedStyle(obj, null)[attr]
+      }
+    }
+    // 封装缓动动画函数
+    function SlowAnimation(obj, target) {
+      clearInterval(obj.timer)
+      obj.timer = setInterval(() => {
+        var start = parseInt(getStyle(obj, 'width'))
+        var speed = (target - start) > 0 ? Math.ceil((target - start) / 10) : Math.floor((target -
+          start) / 10)
+        if (start === target) {
+          clearInterval(obj.timer)
+        } else {
+          obj.style.width = start + speed + 'px'
+        }
+      }, 10)
+    }
+  </script>
+</body>
+
+</html>

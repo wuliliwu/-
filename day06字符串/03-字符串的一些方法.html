@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = 'hello'
+    // var res = str.charAt(2)
+    // 括号里面是索引,如果不填,默认返回第一个
+    // 如果输入的索引不存在,返回空字符串
+    // console.log(res);
+
+    // var str1 = 'huangjiahui'
+    // var index = str1.charCodeAt()
+    // console.log(index);
+
+    // var str2 = 'anannihao'
+    // var index = str2.indexOf('h')
+    // // 如果找到,返回当前的索引,如果重复,返回第一个的索引
+    // // 如果找不到,返回-1
+    // console.log(index);
+
+    // var str4 = 'helloting'
+    // var res = str4.substring(0,3)//数字是索引
+    // // 索引是1或者负数,则从第一个开始
+    // // 截取的规则:包含开始不包含末尾,
+    // console.log(res);
+
+    // var a = 'hejojda'
+    // var res = a.lastIndexOf('j',-1)
+    // var res1 = a.lastIndexOf('j',3)
+    // console.log(res);
+    // console.log(res1);
+
+    var arr = [1, 2, 3, 4, 5, 6, 7, 5, 4, 3]
+    var res = arr.lastIndexOf(4,3)
+    console.log(res);
+    
+    // var res1 = arr.lastIndexOf(5, 6)
+    // console.log(res);
+    // console.log(res1);
+
+    // var str = 'huangjiahui';
+    // var a = str.lastIndexOf('i', 0);
+    // console.log(a); //3 它是从右往左找，找到后返回这个字符在整个字符串里的下标值
+    // var b = str.substring(1,4) // uan
+    // var bb = str.substring(4,1)//uan  默认将晓得排前面,大的排后面.负数无效
+    // var c = str.slice(2,-4) //angji  负数表示后面开始数位置
+    // var d = str.slice(2,4) //an
+    // var d = str.slice(2,4) // '' 大小不能换,否则返回空
+    // console.log(b);
+    // console.log(c);
+    // console.log(d);
+    // console.log(bb);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>键盘事件和组合键</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #div1 {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      background: orange;
+      transform: rotate(0deg);
+    }
+
+    .pd {
+      width: 5px;
+      height: 15px;
+      border-radius: 50%;
+      position: absolute;
+      background: #f06;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1" style="top:350px;left:100px"></div>
+</body>
+
+</html>
+<script>
+  //要求 ： 按住键盘的上下左右箭头  控制div的移动  
+  //按住 空格键  创建子弹 并发射子弹
+  var odiv = document.querySelector("div");
+  document.onkeydown = function (e) {
+    var e = e || event;
+    var code = e.keyCode || e.which;
+    switch (code) {
+    case 37:
+      odiv.style.left = odiv.offsetLeft - 8 + "px";
+      break;
+    case 39:
+      odiv.style.left = odiv.offsetLeft + 8 + "px";
+      break;
+    case 32:
+      //创建子弹
+      var bullet = document.createElement("div");
+      bullet.className = "pd";
+      document.body.appendChild(bullet);
+      bullet.style.top = odiv.offsetTop - bullet.offsetHeight + "px";
+      bullet.style.left = odiv.offsetLeft + odiv.offsetWidth / 2 - bullet.offsetWidth / 2 + "px";
+
+      var timer = setInterval(function () {
+        bullet.style.top = bullet.offsetTop - 3 + "px";
+        if (bullet.offsetTop < -bullet.offsetHeight) {
+          clearInterval(timer);
+          bullet.remove();
+        }
+      }, 30)
+    }
+  }
+</script>

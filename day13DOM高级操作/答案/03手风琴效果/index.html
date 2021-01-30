@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>手风琴效果</title>
+    <style>
+        ul{list-style: none}
+        *{margin:0; padding:0;}
+        div{
+            width: 1200px;
+            height: 400px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;            
+        }
+        div ul {
+            width: 2000px;
+        }
+    </style>
+    <script type="text/javascript" src="../public.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            //需求:
+            //1 当鼠标移入某个li,该li变宽(800),其他li变窄(100)
+            //2 当鼠标移出li,所有li的宽度都变成240
+
+            //获取相关元素
+            var ul = $id('box');
+            var liArr = ul.children;//所有的li
+
+            //1 当鼠标移入某个li,该li变宽(800),其他li变窄(100)
+            for(var i=0;i<liArr.length;i++){
+                //给每个li添加背景图
+                liArr[i].style.background = "url(./images/"+(i+1)+".jpg)";
+
+                liArr[i].onmouseenter = function(){
+                    for(var j=0;j<liArr.length;j++){
+                        // liArr[j].style.width = "100px"
+                        animate(liArr[j],{width:100})
+                    }
+                    // this.style.width = "800px"
+                    animate(this,{width:800})
+                }
+                liArr[i].onmouseleave = function(){
+                    for(var j=0;j<liArr.length;j++){
+                        // liArr[j].style.width = "100px"
+                        animate(liArr[j],{width:240})
+                    }
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+	<div>
+	    <ul id="box">
+	        <li>
+             
+            </li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	    </ul>
+	</div>
+</body>
+</html>
+
+

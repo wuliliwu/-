@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.onmouseup = function (e) { 
+      e = window.event || e
+      // e.button有三个值 左键0 中间键 1 ,右键2
+      console.log(e.button);
+     }
+  </script>
+</body>
+</html>

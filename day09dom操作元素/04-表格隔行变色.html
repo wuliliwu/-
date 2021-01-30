@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 800px;
+      height: 400px;
+
+    }
+    /* table tr {
+      background-color: red;
+    } */
+  </style>
+</head>
+<body>
+  <table border="1px">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <button class="btn">点击换颜色</button>
+  <script src="../公共方法.js"></script>
+  <script>
+    var tr = document.getElementsByTagName('tr')
+    var btn = document.getElementsByClassName('btn')
+    console.log(tr);
+    for (let i = 0; i < tr.length; i++) {
+      if (i%2) {
+        tr[i].style.backgroundColor = '#cccccc'
+      }else{
+        tr[i].style.backgroundColor = 'skyblue'
+      }
+      tr[i].onmouseenter = function() {
+        color1 = window.getComputedStyle(this,null).backgroundColor
+        // console.log(color1);
+        this.style.backgroundColor = 'pink'
+      }
+      tr[i].onmouseleave = function() {
+        this.style.backgroundColor = color1
+      }
+    }
+    document.body.style.backgroundColor = color()
+    console.log(btn);
+    btn[0].onclick = function() {
+      document.body.style.backgroundColor = color()
+    }
+
+
+  </script>
+</body>
+</html>

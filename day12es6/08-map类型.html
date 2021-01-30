@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+</head>
+<body>
+  <script>
+    /* 
+      map对象保存键值对的集合
+      任何值都可以作为一个键或一个值
+    */
+
+  //   var mm = new Map()
+  //   mm = [[1,2,3],'安安']
+
+  //   console.log(    mm.values);    
+  //   console.log(mm);
+
+
+  // 可以使用for...of来迭代map
+  // let myMap = new Map()
+  // myMap.set([1,2,3],'安安')
+  // myMap.set(function() {
+  //   return 1
+  // },'one')
+  // myMap.set(0,'two')
+  // // 遍历里面的键值
+  // // for (const [key,value] of myMap) {
+  // //   console.log(key,value);
+  // // }
+  // // 遍历里面的建
+  // for (const k of myMap.keys()) {
+  //   console.log(k);
+  // }
+  // // 遍历里面的值
+  // for (const v of myMap.values()) {
+  //   console.log(v);
+  // }
+  
+  // var o = {
+  //   a:1
+  // }
+  // for (const [k,v] in o) {
+   
+  //     console.log(k);
+  //   }
+
+
+  var str = '123'
+  var a = {a:1}
+  var b = {...a}
+  console.log(b);
+  console.log(...str);
+  var arr= Array.from(str)
+  console.log(str);
+  var str1 = str.split('')
+  console.log(str1);
+  // console.log(str1.join(''));
+
+  console.log(...str1.toString().replace(/,*\s*/g,''));
+  // function(str1) {
+  //   return ...str1
+  // }
+
+  console.log(arr);
+  </script>
+</body>
+</html>

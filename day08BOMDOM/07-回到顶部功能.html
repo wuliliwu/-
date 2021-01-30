@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回到顶部功能</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      height: 3000px;
+      transition: all 1s;
+      background-color: #ccc;
+    }
+    .btn {
+      /* display: none; */
+      opacity: 0;
+      position: fixed;
+      top: 70%;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      transition: all .5s;
+      background-color: pink;
+    }
+    @keyframes donghua {
+      
+    }
+
+  </style>
+</head>
+<button class="btn"> 
+  点击回到顶部
+</button>
+<ul>
+ <h1>这是顶部</h1>
+ <h1>这是顶部</h1>
+ <h1>这是顶部</h1>
+ <h1>这是顶部</h1>
+ <h1>这是顶部</h1>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li><li>1234565432</li>
+  <li>1234565432</li>
+  <li>1234565432</li>
+</ul>
+<body>
+  <script>
+    var btn = document.querySelector('.btn')
+    btn.onclick = function(){
+      document.documentElement.scrollTo(0,0)
+    }
+    
+    window.onscroll = function(){
+      var juli = document.documentElement.scrollTop
+      if (juli>=700) {
+        // btn.style.display='block'
+        btn.style.opacity = '1'
+      }else{
+        btn.style.opacity = '0'
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖拽</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      position: absolute;
+      left: 400px;
+      top: 100px;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+
+  <script>
+    /* 
+    鼠标在div上按下
+    在div里面移动鼠标
+    div跟着鼠标移动
+    上在div上松开,div停止跟随鼠标
+
+     */
+
+    //  获取元素
+
+    var box = document.getElementsByClassName('box')[0]
+    box.onmousedown = function(e) {
+      // console.log('按下了');
+      e = window.event || e
+      var offx = e.offsetX
+      var offy = e.offsetY
+      document.onmousemove = function(e) {
+        e = window.event || e
+        var left = e.pageX -offx
+        var top = e.pageY -offy
+
+        if (left<0) {
+          left = 0
+        }
+        // 最大宽度
+        maxWidth = window.innerWidth-box.offsetWidth
+        if (left>=maxWidth) {
+          left = maxWidth
+        }
+        if (top<0) {
+          top = 0
+        }
+        // 最大宽度
+        maxHeight = window.innerHeight-box.offsetHeight
+        if (top>=maxHeight) {
+          top = maxHeight
+        }
+        box.style.left = left+'px'
+        box.style.top = top+'px'
+      }
+      document.onmouseup = function() {
+        document.onmousemove = null
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		div {
+			width: 100%;
+			height: 100%;
+		}
+
+		div img {
+			position: absolute;
+			top: 10px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body bgcolor="#000000">
+	<div id="dd"></div>
+	<!-- <img src="./star.gif" alt="" srcset="" width="10px"> -->
+	<script src="../../../../公共方法.js"></script>
+	<script>
+		var box = document.querySelector('#dd')
+		var btn = document.querySelector('#btn')
+		var img = document.createElement('img')
+		var imgs = document.getElementsByClassName('imgs')
+		function size() {
+			// 获取浏览器窗口宽高
+			var bowserH = window.innerHeight
+			var bowserW = window.innerWidth
+			// console.log(box);
+			var img = document.createElement('img')
+			img.setAttribute('src', './star.gif')
+			img.setAttribute('width', rand(4, 18) + 'px')
+			img.setAttribute('alt', '')
+			img.setAttribute('class', 'imgs')
+			img.style.left = rand(0, bowserW - 18) + 'px'
+			img.style.top = rand(0, bowserH - 18) + 'px'
+			box.appendChild(img)
+		}
+		var time = setInterval(size, 1000);
+		var time1
+		if(document.addEventListener) {
+			document.addEventListener('webkitvisibilitychange', function() {
+				console.log(document.webkitVisibilityState);
+				if (document.webkitVisibilityState == "visible") {
+					time1 = setInterval(size, 1000);
+				} else {
+					clearInterval(time1)
+					clearInterval(time)
+				}
+			})
+		}
+
+		document.onclick = function(e) {
+			e = window.event||e
+			var target = e.target || e.srcElement
+			if (target.nodeName == 'IMG') {
+				target.remove()
+			}
+		}
+	</script>
+</body>
+
+</html>

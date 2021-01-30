@@ -1,0 +1,5 @@
+*{margin:0; padding:0}
+#container{padding:10px;width:200px;margin:auto;height:200px;border:orange solid 1px; border-radius:8px;}
+#dice{width:200px;height:200px;}
+#command{margin:auto;width:100px;}
+#command input{width:100px;height:30px;border:#ccc solid 1px;border-radius:8px;}

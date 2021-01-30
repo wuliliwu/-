@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>自定义字体形状</title>
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#wrap {
+			background: url(img/bg.jpg) 0 0 no-repeat;
+			width: 556px;
+			height: 535px;
+			margin: 10px auto;
+			position: relative;
+			display: block;
+		}
+
+		#showbox {
+			position: absolute;
+			top: 100px;
+			left: 10px;
+			height: 270px;
+			width: 385px;
+			display: block;
+			font-size: 16px;
+			overflow: auto;
+		}
+
+		textarea {
+			border: none;
+			position: absolute;
+			width: 385px;
+			height: 75px;
+			left: 10px;
+			top: 415px;
+			font-size: 16px;
+		}
+
+		select {
+			position: absolute;
+			top: 385px;
+			left: 8px;
+		}
+
+		input {
+			position: absolute;
+			top: 509px;
+			left: 323px;
+			width: 80px;
+			cursor: pointer;
+		}
+
+		#showbox div {
+			width: 20px;
+			display: inline-block;
+			font-size: 16px;
+			margin: 2px 0;
+		}
+
+		div img {
+			width: 16px;
+			height: 16px;
+		}
+
+		textarea {
+			outline: none;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<div id="showbox">
+		</div>
+
+		<select name="fontStyle" id="fontStyle" onchange="selChange()">
+			<option value="balloon" >气球字体</option>
+			<option value="heart">表白字体</option>
+			<option value="knife">砍刀字体</option>
+			<option value="jiong">囧人字体</option>
+			<option value="shuai">衰人字体</option>
+			<option value="default" selected>默认字体</option>
+		</select>
+		<textarea id="cont" onchange="change"></textarea>
+		<input type="button" value="发送" id="send">
+	</div>
+	<script>
+		var type
+		selChange()
+		function selChange() {
+			var fontStyle = document.getElementById('fontStyle')
+			var opt = fontStyle.children
+			var index = fontStyle.selectedIndex;
+			// console.log(opt[index].value);
+			type = opt[index].value
+			return opt[index].value
+		}
+	
+		var showbox = document.getElementById('showbox')
+		var cont = document.getElementById('cont')
+		var send = document.getElementById('send')
+
+		function change() {
+			return cont.value
+		}
+
+		send.addEventListener('click', function () {
+			var neirong = change().trim()
+			if (neirong == '') {
+				return
+			} else {
+				// console.log(type);
+				// console.log(neirong.split(''));
+				neirong = neirong.split('')
+				var br = document.createElement('br')
+
+
+				// console.log(br);
+
+				if (type == 'default') {
+					for (let i = 0; i < neirong.length; i++) {
+					var div = document.createElement('div')
+					
+					div.innerHTML = '<span>'+neirong[i] +'</span>'
+
+					cont.value = ''
+					showbox.appendChild(div)
+					if (i == neirong.length-1) {
+						div.parentNode.appendChild(br)
+					}
+				}
+				} else {
+					for (let i = 0; i < neirong.length; i++) {
+					var div = document.createElement('div')
+					
+					div.innerHTML = '<img src="./img/' + type + '.gif">'+'<span>'+neirong[i] +'</span> '
+
+					cont.value = ''
+					showbox.appendChild(div)
+					if (i == neirong.length-1) {
+						div.parentNode.appendChild(br)
+					}
+				}
+				
+				}
+			
+
+
+			}
+		})
+	</script>
+</body>
+
+</html>

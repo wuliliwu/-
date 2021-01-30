@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-dom获取元素节点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+
+      width: 200px;
+      height: 210px;
+      text-align: center;
+      border: 2px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div>安安</div>
+  <div id="app" class="nihao">
+    <!-- 我是你爸爸 -->
+    <span class="nihao">你好</span>
+    <p>你大爷 </p>
+    <span>老色批</span>
+  </div>
+  <div>三七</div>
+  <script>
+    // 在html里面
+    // 换行,标签,注释,文本,标签属性都是节点
+    var divDom = document.getElementById('app')
+    console.log(divDom.childNodes);//所有的节点
+    console.log(divDom.children);
+    console.log(divDom.parentNode);
+    console.log(divDom.parentElement);
+    console.log(divDom.firstChild);
+    console.log(divDom.firstElementChild);
+    console.log(divDom.lastChild);
+    console.log(divDom.lastElementChild);
+    console.log(divDom.previousSibling);
+    console.log(divDom.previousElementSibling);
+    console.log(divDom.nextSibling);
+    console.log(divDom.nextElementSibling);
+    console.log(divDom.attributes);
+    console.log(divDom.offsetHeight);
+    console.log(divDom.offsetWidth);
+    console.log(divDom.offsetLeft);
+    console.log(divDom.offsetTop);
+    console.log(divDom.offsetParent);
+    divDom.className= 'anna'
+    divDom.classList.add('adja')
+    
+  </script>
+</body>
+</html>

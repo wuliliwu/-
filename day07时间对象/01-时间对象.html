@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时间对象</title>
+</head>
+<body>
+  <script>
+    // 方法返回自 1970 年 1 月 1 日 00:00:00 (UTC) 到当前时间的毫秒数。
+    const a = Date.now()
+    console.log(a);
+    const b = Date.parse('1970-1-1 08:00:10')
+    console.log(b);
+    const c = new Date()
+    console.log(c.toLocaleString('zh-ch',{hour12:false}));
+    var d = new Date()
+    console.log(d);
+  </script>
+</body>
+</html>

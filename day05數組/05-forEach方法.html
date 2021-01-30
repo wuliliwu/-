@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [1,2,4,5,6,7]
+  /* 
+    forEach()
+    的时候传递的 那个函数,会根据数组的长度在执行
+    数组的额长度是多少,这个函数就会执行多少回
+
+  */
+    // arr.forEach((element,index,arr1) => {
+    //   console.log(element,index,arr1);
+    // });
+
+    // map方法
+    // map方法可以对数组中的每一项 进行操作,返回一个新的数组
+
+    // var res = arr.map((item,index,arr) => {
+    //   return index+item
+    // })
+    // console.log(res);
+
+    // map用来操作数组,而filter用来筛选数组
+
+    // var res = arr.filter((item,index) => {
+    //   return item>=3
+    // })
+    // console.log(res);
+
+    var arr1 = [3,4,5,5,6,4,6,7]
+    var newArr1 = []
+
+    for (let i = 0; i < arr1.length; i++) {
+      var flag = true
+      for (let j = 0; j < newArr1.length; j++) {
+        if (arr1[i] === newArr1[j]) {
+          flag = false
+          break
+        }  
+      } 
+      if(flag){
+        newArr1.push(arr1[i])
+      } 
+    }
+    console.log(newArr1);
+  </script>
+</body>
+</html>

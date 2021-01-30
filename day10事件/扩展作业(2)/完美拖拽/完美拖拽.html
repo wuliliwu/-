@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>完美拖拽</title>
+	<style type="text/css">
+		html,
+		body {
+			overflow: hidden;
+		}
+
+		body,
+		div,
+		h2,
+		p {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			color: #fff;
+			background: #000;
+			font: 12px/2 Arial;
+		}
+
+		p {
+			padding: 0 10px;
+			margin-top: 10px;
+		}
+
+		span {
+			color: #ff0;
+			padding-left: 5px;
+		}
+
+		#box {
+			position: absolute;
+			width: 300px;
+			height: 150px;
+			background: #333;
+			border: 2px solid #ccc;
+			top: 50%;
+			left: 50%;
+			margin: -75px 0 0 -150px;
+		}
+
+		#box h2 {
+			height: 25px;
+			cursor: move;
+			background: #222;
+			border-bottom: 2px solid #ccc;
+			text-align: right;
+			padding: 0 10px;
+		}
+
+		#box h2 a {
+			color: #fff;
+			font: 12px/25px Arial;
+			text-decoration: none;
+			outline: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="box" style="margin-left: 0px; margin-top: 0px; left: 0; top: 0;">
+		<h2 id="tz"><a href="javascript:;" id="a1">点击回放拖动轨迹</a></h2>
+		<p><strong>Drag:</strong><span>false</span></p>
+		<p><strong>offsetTop:</strong><span>231</span></p>
+		<p><strong>offsetLeft:</strong><span>533</span></p>
+
+
+		<script>
+			var x = []
+			var y = []
+			let box = document.getElementById('box')
+			var tz = document.getElementById('tz')
+			// console.log(tz);
+			box.onmousedown = function (e) {
+				// console.log(e)
+				//鼠标按下时，相对box的位置(ofx,ofy)
+				let offx = e.offsetX
+				let offy = e.offsetY
+				document.onmousemove = function (e) {
+					// console.log(e.pageX);
+					let left = e.pageX - offx
+					if (left <= 0) {
+						left = 0
+					}
+					let maxOffx = window.innerWidth - box.offsetWidth
+					if (left > maxOffx) {
+						left = maxOffx
+					}
+
+
+					let top = e.pageY - offy
+					if (top <= 0) {
+						top = 0
+					}
+					let maxTop = window.innerHeight - box.offsetHeight
+					if (top > maxTop) {
+						top = maxTop
+					}
+					// 设置一下元素的top和left
+					x.push(left)
+					y.push(top)
+					box.style.left = left + 'px'
+					box.style.top = top + 'px'
+
+
+					// console.log(x);
+				}
+				//重置onmousemove事件
+				document.onmouseup = function () {
+					document.onmousemove = ""
+				}
+
+
+			}
+var time
+			tz.ondblclick = function () {
+				// 取数函数
+				time = setInterval(aa, 10)
+			}
+			function aa() {
+					x.length -= 1
+					y.length -= 1
+					if (x.length<=0) {
+						clearInterval(time)
+					}
+					if (x.length>=0) {
+						for (let i = x.length - 1, j = y.length - 1; i >= x.length - 1, j >= y.length - 1; i--, j--) {
+							// console.log(x[i]);
+							// console.log(y[i]);
+							box.style.left = x[i] + 'px'
+							box.style.top = y[j] + 'px'
+						}
+					}if (x.length<0) {
+						clearInterval(time)
+					}
+			}
+		</script>
+	</div>
+
+
+
+</body>
+
+</html>

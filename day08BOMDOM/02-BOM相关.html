@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-BOM相关</title>
+</head>
+<body>
+  <script>
+    // 可视区域
+    var h = window.innerHeight
+    console.log(h);
+    var w = window.innerWidth
+    console.log(w);
+    var h = window.innerHeight
+    window.onresize = function() {
+    // var w = window.innerWidth
+    // var h = window.innerHeight
+    // console.log(w);
+    // console.log(h);
+    }
+    console.log(window.location);
+
+    function tiaozhuan(){
+
+      // assign跳转后还可以回退
+      // replace不可以回退
+
+      // 这四个都是刷新页面的方法
+      location.reload()
+      location.assign(location.href)
+      location.href = location.href
+      location.replace(location.href)
+
+
+    }
+    
+      // 回退历史
+      // history.back()
+      // history.forward()
+      // history.go(正数)
+      // history.go(负数)
+    
+  </script>
+</body>
+</html>

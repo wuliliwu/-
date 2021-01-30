@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 100px;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+  </div>
+
+  <script>
+    var box = document.getElementById('box')
+    box.onclick = function() {
+      clearInterval(box.timer)
+      // 开启一个定时器
+      // 获取元素距离左边有定位元素的距离
+      var distance = 1
+      box.timer = setInterval(() => {
+        var left = this.offsetLeft
+        // 每次需要走的距离
+        this.style.left = left+distance+'px'
+        if (left>400) {
+          this.style.left = 400+'px'
+          clearInterval(this.timer)
+        } 
+       
+      },1)
+    }
+  </script>
+</body>
+
+</html>

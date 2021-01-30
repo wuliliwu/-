@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片切换</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      body,html{
+        text-align: center;
+        margin: 0 auto;
+      }
+      #header {
+       padding-top: 20px;
+      }
+      .pic {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 300px;
+        height: 300px;
+        margin: 20px auto;
+        border: 10px solid #ccc;
+        /* background-color: rgb(150, 143, 143); */
+      }
+      .pic div {
+        text-align: center;
+        color: #fff;
+        background-color: rgba(46, 45, 45, 0.377);
+        height: 30px;
+        line-height: 30px;
+      }
+      .pic .arrow_l{
+        text-align: center;
+        line-height: 30px;
+        font-weight: 800;
+        color: #fff;
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgb(255, 255, 255);
+        background-color: rgb(116, 110, 110);
+        top: 50%;
+        margin-top: -15px;
+        left: 0;
+      }
+      .pic .arrow_r{
+        text-align: center;
+        line-height: 30px;
+        font-weight: 800;
+        color: #fff;
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-color: rgb(116, 110, 110);
+
+        border: 1px solid rgb(255, 255, 255);
+        top: 50%;
+        margin-top: -15px;
+  
+        right: 0;
+      }
+      .pic a {
+        color: #fff;
+      }
+      .pic img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -99;
+      }
+    </style>
+</head>
+<body>
+  <div id="header">
+    <button class="btn1" onclick="loopplay(),alert('您现在点击的是[循环]播放')" >循环播放</button>
+    <button class="btn2" onclick="orderplay(),alert('您现在点击的是[顺序]播放')">顺序播放</button>
+    <div class="pic">
+      <span class='arrow_l' onclick="arrowleft()">
+      <a href="#" > < </a>  
+      </span>
+      <span class='arrow_r' onclick="arrowright()"> 
+        <a href="#"> > </a>
+      </span>
+      <div class="top">
+        <span>图片加载中...</span>
+      </div>
+      <div class="bottom">
+        <span>图片加载中...</span>
+      </div>
+      <img src="./images/6.jpg" alt="">
+    </div>
+  </div>
+
+  <script>
+    var btn1 = document.getElementsByClassName('btn1')
+    var btn2 = document.getElementsByClassName('btn2')
+    var left = document.getElementsByClassName('arrow_l')
+    var right = document.getElementsByClassName('arrow_r')
+    var imgs = document.getElementsByTagName('img')
+    var index = 7
+    var loopindex = arrowleft()
+    
+    
+    
+    var flag = 1
+    function loopplay() {
+      flag = 1
+    }
+    function orderplay() {
+      flag = 2
+    }
+    function arrowleft() {
+      if (flag == 1) {
+          if(index>9){
+            index = 6
+          }
+          imgs[0].src= './images/'+index+'.jpg' 
+          index++  
+        
+      }
+      if (flag == 2) {
+        console.log(loopindex); 
+        loopindex--
+        imgs[0].src= './images/'+loopindex+'.jpg' 
+     
+         if (loopindex<6) {
+           alert('小了小了,傻逼!')
+           loopindex = 6
+           imgs[0].src= './images/'+loopindex+'.jpg' 
+         }  
+         return loopindex
+      }
+      return index
+ 
+    }
+    function arrowright() {
+      if (flag == 1) {
+          if(index<=5){
+            index = 9
+          }
+          imgs[0].src= './images/'+index+'.jpg' 
+          index--  
+      }
+      if (flag == 2) {
+        imgs[0].src= './images/'+loopindex+'.jpg' 
+         loopindex++
+         if (loopindex>=11) {
+           alert('大了大了!草拟吗的')
+           console.log(loopindex);
+           loopindex = 9
+           console.log(loopindex);
+           imgs[0].src= './images/'+loopindex+'.jpg' 
+         }  
+        return loopindex
+      }
+      return index
+      
+    }
+    
+    
+
+  </script>
+</body>
+</html>

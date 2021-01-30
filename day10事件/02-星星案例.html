@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      position: absolute;
+      display: none;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <img src="../day09dom操作元素/扩展作业/动态创建星星/题目/star.gif" alt="" srcset="">
+
+  <script>
+    var img = document.querySelector('img')
+    document.onmousemove = function(e) {
+      e = e || window.event
+      var Left = e.pageX
+      var Top = e.pageY
+      img.style.display = 'block'
+      img.style.left = Left - img.offsetWidth/2 +'px'
+      img.style.top = Top - img.offsetHeight/2 + 'px'
+      console.log(img.offsetLeft)
+      console.log(img.offsetTop);
+
+    }
+  </script>
+
+</body>
+</html>

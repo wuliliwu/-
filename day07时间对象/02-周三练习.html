@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="../公共方法.js"></script>
+  <script>
+    // 1.编写-个函数，能够获得一 个随机的0 ~ 255之间的数字
+    // var num = rand(0,255)
+    // console.log(num);
+
+    // 2.编写-一个函数,获得一个十六进制的随机颜色的字符串(例如: #20CD4F)
+
+    // function getColor() {
+    //   var str = '#'
+    //   for (let i = 0; i < 6; i++) {
+    //     var num = rand(0,15).toString(16)
+    //     str+=num
+    //   }
+    //   return str
+
+    // }
+    // var color = getColor()
+    // console.log(color);
+
+    // 1.编写函数,把当前时间格式化成YY-MM-DD HH-mm-ss
+
+    // var time = new Date()
+    // var date = dateFormat('YYYY-mm-dd HH:MM:SS',time)
+    // console.log(date);
+
+    // 3.编写函数，要求传入两个时间节点，能返回两个时间节点之间相差多少 天多少小时多少分钟多少秒
+
+    // function differ(num1, num2) {
+    //   var num = (num2 - num1) / 1000
+    //   var daysec = 24 * 60 * 60
+    //   var hoursec = 60 * 60
+    //   var minsec = 60
+    //   var days = parseInt(num / daysec)
+    //   num = num - days * daysec
+    //   var hours = parseInt(num / hoursec)
+    //   num = num - hours * hoursec
+    //   var minute = parseInt(num / minsec)
+    //   num = num - minute * minsec
+    //   var seconds = parseInt(num)
+    //   return '距离有' + days + '天' + hours + '小时' + minute + '分钟' + seconds + '秒'
+
+    // }
+    // var num1 = Date.parse('2021/1/12 08:00:10')
+    // var num2 = Date.parse('2021/1/25 10:07:20')
+    // var num3 = Date.now()
+    // var time = differ(num1,num3)
+    // console.log(time);
+
+    // 1.在页面上出现一个倒计时，显示现在到某一-时间点的倒计时(以汉字的形式出现倒计时)
+
+    // var now = Date.now()
+    // var weilai = new Date('2021/2/6 18:00:00')
+    // window.onload = function () {
+    //   setInterval(differ, 1000);
+    //   differ(now,weilai)
+    // }
+    // document.write(timer)
+
+    // var timer = setInterval(differ(now,weilai), 1000);
+    // clearInterval(timer)
+
+    // var timer = differ(now,weilai)
+    // setInterval(() => {
+    //   document.write(timer)
+    // }, 1000);
+    // console.log(timer);
+
+
+
+
+    console.log(countDown('2021-1-23 18:00:00'));
+  </script>
+</body>
+
+</html>

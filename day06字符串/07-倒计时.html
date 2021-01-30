@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 计算现在到2021年2月5日下午18:00还有多久
+    var now = new Date()//现在的时间的对象
+    var jiaqi = new Date('2021/2/5 18:00:00')//放假时间
+    // 计算时间差
+    // console.log(now);
+    // console.log(jiaqi);
+    var cha = parseInt((jiaqi - now)/1000)
+    console.log(cha);
+    var day = parseInt(cha/(24*60*60))
+    var hour = parseInt((cha-day*24*60*60)/3600)
+    var minute = parseInt((cha-day*24*60*60-hour*3600)/60)
+    var sec = parseInt((cha-day*24*60*60-hour*3600-minute*60))
+    console.log(day,hour,minute,sec);
+    
+
+
+  </script>
+</body>
+</html>

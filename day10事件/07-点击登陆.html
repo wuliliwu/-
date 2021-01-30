@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div.aa {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: red;
+      opacity: 0.2;
+    }
+
+    div.login {
+      width: 200px;
+      height: 100px;
+      background: red;
+      margin: 50px auto;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">登录</button>
+  <div class="login">
+    <form>
+      <input type="text" value="用户名" class="username">
+      <input type="text" value="密码">
+    </form>
+  </div>
+  <div class="aa" style="left:12px;top:45px;"></div>
+  <div class="aa" style="left:56px;top:787px;"></div>
+  <div class="aa" style="left:89px;top:343px;"></div>
+  <div class="aa" style="left:45px;top:343px;"></div>
+  <div class="aa" style="left:343px;top:343px;"></div>
+  <div class="aa" style="left:656px;top:343px;"></div>
+  <div class="aa" style="left:879px;top:23px;"></div>
+  <div class="aa" style="left:56px;top:787px;"></div>
+  <div class="aa" style="left:789px;top:676px;"></div>
+  <div class="aa" style="left:45px;top:46px"></div>
+  <script>
+    // 获取登陆按钮
+    // 点击登陆按钮,显示登录框,点击其他地方关闭    
+    var form = document.getElementsByTagName('form')[0]
+    var btn = document.getElementById('btn')
+    var user = document.getElementsByTagName('input')
+    var password = document.getElementById('password')
+    var login = document.querySelector('.login')
+
+    console.log(user);
+    btn.addEventListener('click', function (e) {
+      e = window.event || e
+      login.style.display = 'block'
+      e.stopPropagation ? e.stopPropagation() : e.cancelBubble()
+
+    })
+    document.addEventListener('click', function () {
+      login.style.display = 'none'
+    })
+    login.onclick = function (e) {
+      e = window.event || e
+      e.stopPropagation ? e.stopPropagation() : e.cancelBubble()
+    }
+    // username.onfocus = function() {
+    //   console.log(1111);
+    // }
+    
+  </script>
+</body>
+
+</html>

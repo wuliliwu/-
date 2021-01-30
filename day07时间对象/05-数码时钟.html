@@ -1,0 +1,44 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+
+<body>
+	<div id="div">
+		<img src="img/0.png" />
+		<img src="img/8.png" />
+		时
+		<img src="img/1.png" />
+		<img src="img/5.png" />
+		分
+		<img src="img/0.png" />
+		<img src="img/9.png" />
+		秒
+	</div>
+</body>
+</html>
+<script>
+   var imgs = document.getElementsByTagName('img')
+   var date = new Date()
+   var hour = date.getHours()
+   var hourShi = parseInt(hour/10)
+   var hourGe = hour%10
+   imgs[0].src = 'img/'+ hourShi + '.png'
+   imgs[1].src = 'img/'+ hourGe + '.png'
+   var fen = date.getMinutes()
+   var fenShi = parseInt(fen/10)
+   var fenGe = fen%10
+   imgs[2].src = 'img/'+ fenShi + '.png'
+   imgs[3].src = 'img/'+ fenGe + '.png'
+   var miao = date.getSeconds()
+   var miaoShi = parseInt(miao/10)
+   var miaoGe = miao%10
+   imgs[4].src = 'img/'+ miaoShi + '.png'
+   imgs[5].src = 'img/'+ miaoGe + '.png'
+</script>

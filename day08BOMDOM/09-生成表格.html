@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      margin: 20px auto;
+      width: 500px;
+      /* height: 200px; */
+      text-align: center;
+      table-layout: fixed;
+      border-collapse: collapse;
+      border: 1px solid #000;
+    }
+    table td {
+      padding: 10px;
+    }
+    table th {
+      background-color: rgb(165, 164, 164);
+    }
+    table td input[type='text'] {
+      width: 50%;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="">
+    <table border="1px">
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>性别</th>
+      <th>操作</th>
+      <tr>
+        <td class="name">
+          <!-- <input type="text"> -->
+        </td>
+        <td class="age">111</td>
+        <td class="gender">111</td>
+        <td>
+          <input type="button" value="删除" class="remove">
+          <input type="button" value="编辑" class="edit">
+        </td>
+      </tr>
+      <tr>
+        <td class="name">111</td>
+        <td class="age">111</td>
+        <td class="gender">111</td>
+        <td>
+          <input type="button" value="删除" class="remove">
+          <input type="button" value="编辑" class="edit">
+        </td>
+      </tr><tr>
+        <td class="name">111</td>
+        <td class="age">111</td>
+        <td class="gender">111</td>
+        <td>
+          
+          <input type="button" value="删除" class="remove">
+          <input type="button" value="编辑" class="edit">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+
+    // 这是谁
+    var arr = [{
+      name: 'Jack',
+      age: 18,
+      gender: '男'
+    }, {
+      name: 'Rose',
+      age: 20,
+      gender: '女'
+    }, {
+      name: 'Top',
+      age: 22,
+      gender: '男'
+    }]
+
+    var stuname = document.querySelectorAll('.name')
+    var age = document.querySelectorAll('.age')
+    var gender = document.querySelectorAll('.gender')
+    var tr = document.querySelectorAll('tr')
+    var td = document.querySelectorAll('td')
+    var input = document.querySelectorAll('xiugai')
+    // console.log(td);
+    console.log(input);
+    var removeBtn = document.getElementsByClassName('remove')
+    var edit = document.getElementsByClassName('edit')
+    // console.log(edit);
+    // console.log(removeBtn);
+    // console.log(removeBtn[0]);
+    // console.log(stuname);
+    for (let i = 0; i < stuname.length; i++) {
+      stuname[i].innerHTML = arr[i].name
+      age[i].innerHTML = arr[i].age
+      gender[i].innerHTML = arr[i].gender
+    }
+
+    for (let i = 0; i < removeBtn.length; i++) {
+      removeBtn[i].onclick =  function() {
+        // console.log(1111);
+      tr[i+1].remove()
+    }
+    }
+    for (let i = 0; i < edit.length; i++) {
+      edit[i].onclick = function(){
+        stuname[i].innerHTML = '<input type="text" class="xiugai">'
+        age[i].innerHTML = '<input type="text" class="xiugai">'
+        gender[i].innerHTML='<input type="text" class="xiugai">'
+      }
+    }
+
+    
+
+    
+  </script>
+</body>
+
+</html>

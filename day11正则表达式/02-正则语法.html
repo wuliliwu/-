@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ <style>
+   * {
+     margin: 0;
+     padding: 0;
+   }
+   .box {
+     height: 300px;
+    margin: 10px auto; 
+
+  }
+  .box .aa{
+    margin-bottom: 10px;
+  }
+  .aa label {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+  }
+
+  .aa input {
+    width: 200px;
+    height: 20px;
+    border: 1px solid#ccc;
+    outline: none;
+  }
+  button {
+    text-align: center;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    background-color: rgb(0, 0, 0);
+  }
+ </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="aa">
+      <label for="" >用户名:</label><input type="text" name="" id="username" oninput="checkName()">
+      <span class="userTip">用户名为6-8位的数字/字母/下划线</span>
+    </div>
+    <div class="aa">
+      <label for="">密码:</label><input type="password" name="" id="password" oninput="checkPwd()">
+      <span class="pwdTip">密码必须为6-8位的数字/字母/下划线的组合</span>
+    </div>
+    <div>
+      <button type="submit" id="sub">注册</button>
+    </div>
+  </div>
+  <script>
+    // 封装两个函数
+    function checkName() {
+      var nameInput = document.getElementById('username').value
+      var userTip = document.querySelector('.userTip')
+      var reg = /^\w{6,8}$/gm
+      var flag = reg.test(nameInput)
+      if (flag) {
+        userTip.innerHTML = '输入正确'
+        userTip.style.color = 'green'
+
+      }else{
+        userTip.innerHTML = '用户名为6-8位的数字/字母/下划线'
+        userTip.style.color = 'red'
+      }
+
+      return flag
+    }
+    function checkPwd() {
+      var pwdInput = document.getElementById('password').value
+      var pwdTip = document.querySelector('.pwdTip')
+      var reg = /^\w{6,8}$/gm
+      var flag = reg.test(pwdInput)
+
+      if (flag) {
+        pwdTip.innerHTML = '输入正确'
+        pwdTip.style.color = 'green'
+
+      }else{
+        pwdTip.innerHTML = '密码必须为6-8位的数字/字母/下划线的组合'
+        pwdTip.style.color = 'red'
+      }
+      return flag
+    }
+
+    // 点击注册按钮验证
+    
+  </script>
+</body>
+
+</html>

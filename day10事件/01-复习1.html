@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+      2021年1月27日09:04:54
+
+      事件
+      1.事件的传播
+      在子元素上触发事件,也会触发父元素的同类型事件,直到window
+
+      2.冒泡.捕获.目标
+      目标:被点击的元素:e.target||e.srcElement
+      冒泡:事件现在目标元素上触发,一次向外触发,最后触发window的事件
+      捕获:事件先在window上触发,依次向内触发,最后触发目标元素事件
+
+
+      3.事件委托
+      把子元素的事件委托给父元素邦洞,可以给动态生成的元素绑定事件
+
+      4.阻止冒泡
+      e.stopPropagation||e.cancleBubble
+
+      5.阻止默认行为
+      e.preventDefault||e.returnValue=false
+
+
+     */
+  </script>
+</body>
+</html>

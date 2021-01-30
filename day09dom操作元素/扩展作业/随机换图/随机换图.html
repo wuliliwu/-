@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		img{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+
+<body>
+	<img src="1m.jpg" alt="" id="img1" />
+
+	<script src="../../../公共方法.js"></script>
+	<script>
+		var img = document.getElementById('img1')
+		function changePic(){
+			var num = rand(1,4)
+			img.src = num+"m.jpg"
+
+		}
+		setInterval(changePic, 2000);
+	</script>
+</body>
+
+</html>

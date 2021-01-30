@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>五星评分</title>
+  <style type="text/css">
+    #ul1 {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      width: 300px;
+      height: 28px;
+    }
+
+    #ul1 li {
+      float: left;
+      background: url(star.gif) no-repeat;
+      background-position: 0 0px;
+      width: 27px;
+      height: 28px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <ul id="ul1">
+    <li class="default"> </li>
+    <li class="default"> </li>
+    <li class="default"> </li>
+    <li class="default"> </li>
+    <li class="default"> </li>
+  </ul>
+  <div id="div"></div>
+  <script>
+    var ul1 = document.getElementById('ul1')
+    var lis = document.getElementsByClassName('default')
+    var div = document.getElementById('div')
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].index = i
+      // console.log(lis[i].index);
+    }
+    
+    ul1.addEventListener('mouseover',function(e){
+      // 兼容性处理
+      e = window.event || e
+      var target = e.target || e.srcElement      
+      if (target.nodeName == 'LI') {
+        console.log(target.index);
+        for (let i = 0; i <= target.index; i++) {
+          lis[i].style.backgroundPosition = '0 -27px'
+        }
+      }
+      lis[4].onclick = function() {
+        div.innerHTML = '五星好评o(￣▽￣)ｄ'
+        ul1.removeEventListener('mouseout',handle)
+        
+      }
+    })
+
+    function handle(e){
+      e = window.event || e
+      var target = e.target || e.srcElement
+      if (target.nodeName == 'LI') {
+      for (let i = 0; i <= target.index; i++) {
+          lis[i].style.backgroundPosition = '0 -27px'
+      }
+      for (let i = target.index+1; i < lis.length; i++) {
+        lis[i].style.backgroundPosition = '0 0'
+        
+      }
+
+      }
+    }
+    ul1.addEventListener('mouseout',handle)
+  </script>
+</body>
+
+</html>

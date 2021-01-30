@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM操作</title>
+</head>
+<style>
+	#detail {
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+		display: none;
+		position: absolute;
+		left: 500px;
+		top: 300px;
+		background: #fff;
+	}
+
+	table tr td a:first-child {
+		position: relative;
+	}
+
+	.box {
+		position: absolute;
+		display: none;
+		width: 200px;
+		min-height: 100px;
+		z-index: 99;
+		color: #fff;
+		border-radius: 10px;
+		/* line-height: 24px; */
+		border: 2px solid rgb(63, 63, 63);
+		background-color: rgba(0, 0, 0, 0.541);
+	}
+</style>
+
+<body>
+
+
+
+	标题：<input type="text" id="topic_name" size=60 value="安安历险记" /><br>
+	内容：<input type="text" id="topic_content" size=60 value="我是大帅逼" /><br>
+	作者：<input type="text" id="author" size=60 value="安安" /><br>
+	<button id="saveBtn">保存</button>
+	<table id="tab" border=1>
+		<tr>
+			<th>ID</th>
+			<th>帖子名称</th>
+			<th>内容预览</th>
+			<th>发布时间</th>
+			<th>作者</th>
+			<th>操作</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td class="title">安安</td>
+			<td>你是煞笔</td>
+			<td>2016-04-15</td>
+			<td>LSP</td>
+			<td name="option">
+				<a name="detail" href="#">详细信息
+					<span class="box">
+
+					</span>
+				</a>
+				<a class="delbtn" href="javascript:;">删除</a>
+			</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td class="title">黄家辉</td>
+			<td>你是大傻逼</td>
+			<td>2016-04-15</td>
+			<td>老色批</td>
+			<td name="option">
+				<a name="detail" href="#">详细信息
+					<span class="box">
+
+					</span>
+				</a>
+				<a class="delbtn" href="javascript:;">删除</a>
+			</td>
+		</tr>
+
+		<table>
+			<div id="detail"></div>
+			<script>
+				var tr = document.getElementById('tab').getElementsByTagName('tr')
+				var mingcheng = document.getElementById('topic_name')
+				var topic = document.getElementById('topic_content')
+				var author = document.getElementById('author')
+				var saveBtn = document.getElementById('saveBtn')
+				var tab = document.getElementsByTagName('tbody')[0]
+				var detailBtn = document.getElementsByName('detail')
+				var box = document.getElementsByClassName('box')[0]
+
+				// console.log(detailBtn);
+
+				// console.log(mingcheng);
+				// 获取三个输入框
+				// console.log(tr);
+				// 删除功能
+				function delBtn() {
+
+					var del = document.getElementsByClassName('delbtn')
+					for (let i = 0; i < tr.length; i++) {
+						if (i == 0) {
+							continue
+						} else {
+							del[i - 1].addEventListener('click', function () {
+								// var c = confirm('Are  you  sure 删除？')
+								this.parentNode.parentNode.remove()
+							})
+						}
+					}
+				}
+				delBtn()
+				// 编辑功能
+				function edit() {
+					// var tr = document.getElementById('tab').getElementsByTagName('tr')
+					var title = document.getElementsByClassName('title')
+					
+					
+					// console.log(title[0].innerHTML);
+					for (let i = 0; i < title.length; i++) {
+						title[i].index = i
+						title[i].ondblclick = function() {
+							var value1 = title[this.index].innerHTML
+							title[this.index].innerHTML = '<input id="inp" value=""></input>'
+							title[this.index].children[0].value = value1
+							// console.log(title[this.index].children[this.index]);
+						}
+						
+
+						// console.log(title[0]);
+						
+						
+					}
+				
+					// for (let i = 1; i < tr.length; i++) {
+					// 	var edit_td = tr[i].children
+					// 	console.log(edit_td);
+					// 	for (let j = 1; j < edit_td.length - 1; j++) {
+					// 		// console.log(edit_td[j].innerHTML);
+					// 		if (j == 3) {
+					// 			continue
+					// 		} else {
+					// 			edit_td[j].ondblclick = function () {
+					// 				// edit_td[j].innerHTML = edit_td[j].innerHTML
+					// 				this.innerHTML = '<input id="inp"></input>'
+					// 			}
+					// 		}
+
+					// 	}
+					// }
+					// var inp = document.getElementById('inp')
+					// 		console.log(inp)
+
+				}
+				edit()
+				// 显示小卡片
+				var show = false
+				function showTab() {
+					// console.log(show);
+					var trs = detailBtn[0].parentNode.parentNode.parentNode.children
+					// 这里可以获取所有的tr
+					// console.log(trs);
+					for (let i = 0; i < detailBtn.length; i++) {
+						detailBtn[i].onclick = function () {
+							show = !show
+							// console.log(detailBtn[i].parentNode.parentNode.parentNode.children);
+							for (let j = 1; j < trs.length; j++) {
+								console.log(trs[j].children[5].children[0].children);
+								var trStyle = trs[j].children[5].children[0].children[0].style
+								// console.log(trStyle);
+								trStyle.display = 'none'
+							}
+							if (show) {
+								let name = this.parentNode.parentNode.children[1].innerHTML
+								let cnt = this.parentNode.parentNode.children[2].innerHTML
+								let time = this.parentNode.parentNode.children[3].innerHTML
+								let auth = this.parentNode.parentNode.children[4].innerHTML
+								this.children[0].innerHTML = '帖子名称：' + name + '<br/>' + '内容预览：' + cnt + '<br/>' + '发布时间：' + time +
+									'<br/>' + '作者:' + auth
+								// box.innerHTML = '帖子名称：'+mingcheng.value + '\n内容预览：'+topic.value+'\n作者:'+author.value
+								this.children[0].style.display = 'block'
+							} else {
+								this.children[0].style.display = 'none'
+							}
+
+
+						}
+					}
+				}
+				showTab()
+				// 点击其他地方隐藏
+
+				// 添加功能
+				saveBtn.onclick = function () {
+					var addtr = document.createElement('tr')
+					addtr.innerHTML =
+						'<td></td><td class="title"></td><td></td><td></td><td></td><td name="option"><a name="detail" href="#">详细信息 <span class="box"> </span> </a><a class="delbtn" href="javascript:;">删除</a></td>';
+					if (mingcheng.value && topic.value && author.value) {
+						tab.appendChild(addtr)
+					} else {
+						alert('请输入表格内容')
+						return
+					}
+					var tr = document.getElementById('tab').getElementsByTagName('tr')
+					num = parseInt(tr[tr.length - 1].previousElementSibling.children[0].innerHTML) + 1
+					var id = tr[tr.length - 1].children[0].innerHTML = num ? num : 1
+					var title = tr[tr.length - 1].children[1].innerHTML = mingcheng.value
+					var cont = tr[tr.length - 1].children[2].innerHTML = topic.value
+					var time = tr[tr.length - 1].children[3].innerHTML = dateFormat('YYYY-mm-dd', new Date())
+					var zuozhe = tr[tr.length - 1].children[4].innerHTML = author.value
+					// 清空输入框内容
+					mingcheng.value = '';
+					topic.value = '';
+					author.value = ''
+					delBtn()
+					showTab()
+				}
+				// 格式化时间
+				function dateFormat(fmt, date) {
+					let ret;
+					const opt = {
+						"Y+": date.getFullYear().toString(), // 年
+						"m+": (date.getMonth() + 1).toString(), // 月
+						"d+": date.getDate().toString(), // 日
+						"H+": date.getHours().toString(), // 时
+						"M+": date.getMinutes().toString(), // 分
+						"S+": date.getSeconds().toString() // 秒
+						// 有其他格式化字符需求可以继续添加，必须转化成字符串
+					};
+					for (let k in opt) {
+						ret = new RegExp("(" + k + ")").exec(fmt);
+						if (ret) {
+							fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+						};
+					};
+					return fmt;
+				}
+			</script>
+</body>
+
+</html>

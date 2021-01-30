@@ -1,0 +1,326 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<title> New Document </title>
+	<meta name="Generator" content="EditPlus">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<style>
+		span {
+			font-size: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="">
+		<table width="600" height="530" border="1" align='center'>
+			<tr>
+				<td colspan="2" align="center">用户名注册</td>
+			</tr>
+			<tr>
+				<td width="116" align="right">用户名：</td>
+				<td width="323"><label>
+						<input type="text" name="" id="username" onchange="checkName()" placeholder="请输入用户名" />
+						<span class="userTip">6-10位字母或者数字组成,不能以数字开头</span>
+
+					</label></td>
+			</tr>
+			<tr>
+				<td width="116" align="right">性别：</td>
+				<td width="323"><label>
+						<input type="radio" name="sex" id="" />男
+						<input type="radio" name="sex" id="" />女
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">年龄：</td>
+				<td><label>
+						<input type="text" name="" id="age" placeholder="请输入年龄" onchange="checkAge()" />
+						<span class="ageTip">年龄在1-120岁之间</span>
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">密码：</td>
+				<td><label>
+						<input type="password" name="" id="pwd" 请输入密码 oninput="checkPwd()" placeholder="请输入密码" />
+						<span class="pwdTip">以字母开头6-18位,包含字母、数字和下划线</span>
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">确认密码：</td>
+				<td><label>
+						<input type="password" name="" id="qpwd" placeholder="请确认密码" onchange="surePwd()"/>
+						<span class="sureTip">请再次输入密码</span>
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">手机：</td>
+				<td><label>
+						<input type="text" name="" id="tel" oninput="checkTel()"/>
+						<span class="telTip">请输入正确的手机号</span>
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">QQ:</td>
+				<td><label>
+						<input type="text" name="" id="qq" oninput="checkQQ()"/>
+						<span class="qqTip">请输入QQ号</span>
+
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">邮箱：</td>
+				<td><label>
+						<input type="text" name="" id="email" oninput="checkmail()"/>
+						<span class="emailTip">请输入邮箱号</span>
+
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">邮编：</td>
+				<td><label>
+						<input type="text" name="" id="eml" oninput="checkeml()"/>
+						<span class="emlTip"></span>
+					</label></td>
+			</tr>
+			<tr>
+				<td align="right">身份证：</td>
+				<td><label>
+						<input type="text" name="" id="sname" />
+					</label></td>
+			</tr>
+			<tr>
+        <td align="right">验证码：</td>
+        <td><label>
+            <input type="text" id="code" onchange="checkCode()"/>
+            <span id="yz"
+              style=" background:url(./1.png) -10px -15px;width:80px; font-size: 20px; height: 20px;border: 1px solid black;display: inline-block; text-align: center;"></span>
+            <a href="javascript:;" id='btn' onclick="code()">看不清</a>
+          </label></td>
+      </tr>
+			<tr>
+				<td align="right">爱好：</td>
+				<td><label>
+						<input type="checkbox" name="a" id="c1">
+						足球
+						<input type="checkbox" name="a" id="c2">
+						篮球
+						<input type="checkbox" name="a" id="c3">
+						排球
+						<input type="checkbox" name="a" id="c4">
+						网球
+					</label></td>
+			</tr>
+			<tr>
+				<td height="36" colspan="2" align="center"><label>
+						<input type="submit" value="注册" id="zhuce"/>
+					</label></td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>
+<script type="text/javascript">
+
+	/*
+
+	 要求：
+	 	1、使用失去焦点事件完成表单验证  每一项验证失去焦点时都可以即时验证
+		 2、姓名： 单词字符组成  6--10为 ，不能用数字开头
+
+		 字母或者数字组成,不能以数字开头
+		 /^[^\d]\[a-zA-Z]{6,10}/
+
+	 	      年龄： 只能由数字组成  年龄不能为负数
+					 密码：6--18位字符组成       有密码强弱验证 
+					 
+	 	3、确认密码和密码相同
+	 	4、手机号： 15  13  18 开头
+	 	5、qq ： 5--12位数字  第一位不能是数字
+	 	6、邮箱： 必须有@符号
+	 	7、邮编：6为数字
+	 	8、身份证： 18位   最后一位考虑有x
+	 	9、验证码  
+	 		输入的验证码必须和红色框中的相同，  点击看不清可以实现验证码的切换
+	 		验证码由字母  数字组成
+	 	10、爱好和性别必选	
+	 * */
+
+	 var zhuce = document.getElementById('zhuce')
+	 zhuce.onclick = function() {
+		 var flag = checkCode()
+		 if (flag) {
+			 alert('注册成功')
+			//  window.location.href= 'https://www.baidu.com/'
+		 }else{
+			 alert('验证码错误!!')
+		 }
+	 }
+	 	 function checkCode(){
+		 var code = document.getElementById('code').value
+		 var reg = new RegExp(str,'i')
+		 var flag = reg.test(code)
+		 return flag
+			
+	 }
+	 function checkeml() {
+		var eml = document.getElementById('eml').value
+		var emlTip = document.querySelector('.emlTip')
+		var emlreg = /\d{6}/
+		console.log(eml);
+		var flag = emlreg.test(eml)
+		if (!flag) {
+			emlTip.innerHTML = '请输入正确的邮编!'
+			emlTip.style.color = 'red'
+		}else {
+			emlTip.innerHTML = '输入正确'
+			emlTip.style.color = 'green'
+		}
+	} 
+	 
+	 function checkmail() {
+		var email = document.getElementById('email').value
+		var emailTip = document.querySelector('.emailTip')
+		var emailreg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+		var flag = emailreg.test(email)
+		if (!flag) {
+			emailTip.innerHTML = '请输入正确的邮箱号码!'
+			emailTip.style.color = 'red'
+		}else {
+			emailTip.innerHTML = '输入正确'
+			emailTip.style.color = 'green'
+		}
+	}
+	 
+	 function checkQQ() {
+		var qq = document.getElementById('qq').value
+		var qqTip = document.querySelector('.qqTip')
+		var qqreg = /[1-9]([0-9]{4,10})/
+		var flag = qqreg.test(qq)
+		if (!flag) {
+			qqTip.innerHTML = '请输入正确的QQ号码!'
+			qqTip.style.color = 'red'
+		}else {
+			qqTip.innerHTML = '输入正确'
+			qqTip.style.color = 'green'
+		}
+	}
+	function checkTel() {
+		var tel = document.getElementById('tel').value
+		var telTip = document.querySelector('.telTip')
+		var telreg = /^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
+		var flag = telreg.test(tel)
+		if (!flag) {
+			telTip.innerHTML = '请输入正确的手机号码!'
+			telTip.style.color = 'red'
+		}else {
+			telTip.innerHTML = '输入正确'
+			telTip.style.color = 'green'
+		}
+	}
+
+	function checkName() {
+		var nameInput = document.getElementById('username').value
+		var userTip = document.querySelector('.userTip')
+		var namereg = /^[^\d][a-zA-Z\d]{6,10}$/
+		var flag = namereg.test(nameInput)
+		console.log(flag);
+		if (flag) {
+			userTip.innerHTML = '输入正确'
+			userTip.style.color = 'green'
+
+		} else {
+			userTip.innerHTML = '6-10位字母或者数字组成,不能以数字开头'
+			userTip.style.color = 'red'
+		}
+		return flag
+	}
+
+	function checkAge() {
+		var ageipt = document.getElementById('age').value
+		var ageTip = document.querySelector('.ageTip')
+		var agereg = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/
+		var flag = agereg.test(ageipt)
+		console.log(flag);
+		if (flag) {
+			ageTip.innerHTML = '输入正确'
+			ageTip.style.color = 'green'
+
+		} else {
+			ageTip.innerHTML = '年龄在1-120岁之间'
+			ageTip.style.color = 'red'
+		}
+		return flag
+	}
+
+	function checkPwd() {
+		var pwdipt = document.getElementById('pwd').value
+		var pwdTip = document.querySelector('.pwdTip')
+		var reg1 = /^[a-zA-Z]{6,18}/
+		var reg2 = /^[a-zA-Z]\w{6,18}$/
+		var flag1 = reg1.test(pwdipt)
+		var flag2 = reg2.test(pwdipt)
+		if (flag1) {
+			pwdTip.innerHTML = '密码强度弱'
+			pwdTip.style.color = 'red'
+			if (flag2) {
+				pwdTip.innerHTML = '密码强度强'
+				pwdTip.style.color = 'green'
+			}
+		} else {
+			pwdTip.innerHTML = '以字母开头6-18位,包含字母、数字和下划线'
+			pwdTip.style.color = 'red'
+		}
+	}
+
+	function surePwd() {
+		var pwdipt = document.getElementById('pwd').value
+		var qpwd = document.getElementById('qpwd').value
+		var sureTip = document.querySelector('.sureTip')
+		console.log();
+		if (qpwd !== pwdipt) {
+			sureTip.innerHTML = '两次输入密码不一致'
+			sureTip.style.color = 'red'
+		}else {
+			sureTip.innerHTML = '两次输入密码一致'
+			sureTip.style.color = 'green'
+		}
+
+	}
+
+	
+	
+	// 验证码验证
+
+
+	var codeshuzi = document.getElementById('yz')
+  var btn = document.getElementById('btn')
+    function rand(min, max) {
+      return parseInt(Math.random() * (max - min + 1)) + min
+    }
+
+    function code() {
+      str = ''
+      for (let i = 0; i < 6; i++) {
+        var num = rand(48,122)
+        if (num>=48&&num<=57 || num>=65&&num<=90 || num>=97&&num<=122) {
+          str+=String.fromCharCode(num)
+        }else{
+          i--
+        }
+      }
+      return str
+    }
+    var str = code()
+    codeshuzi.innerText = str
+    btn.onclick = function() {
+      code()
+      codeshuzi.innerText = str
+
+    }
+
+</script>

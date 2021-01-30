@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 浏览器对象模型
+   /*  2021年1月22日09:26:43
+
+   一.浏览器对象模型
+
+   innerHeight
+   innerWidth 
+
+   1.localtion对象
+    -localtion.href
+    -localtion.hash
+    -localtion.assign
+    -localtion.replace
+    -localtion.reload
+    -localtion.hostname
+
+
+    2.history对象
+      -history.back()
+      -history.forward
+      -history.go(1)
+      -history(-1)
+
+    3.navigator对象
+      -navagatior.userAgrnt
+      -navagatior.appName
+      -navagatior.appVersion
+      -navagatior.platform
+
+    4.弹窗
+    alert() / prompr() / console.log() / confirm()
+
+    5.window.onload浏览器资源加载完后执行
+    6.onscroll 页面滚动事件,页面发生滚动的 时候出发 
+      -scrollTop页面向上滚动的距离
+        document.documentElement.scrollTop
+        document.body.scrollTop
+        window.pageYOffset
+      -scrollLeft 向左边滚动的距离
+        document.documentElement.scrollLeft
+        document.body.scrollLeft
+        window.pageXOffset
+
+    7.定时器
+      -setTimeout
+      -setInterval
+      清除定时器
+        -clearTimeout
+        -clearInterval
+    
+    二.文档对象模型
+    获取元素
+      -document.getElementById('id') 返回一个节点,唯一的id
+      -document.getElementByTagName('tagName') 返回一个符合条件节点的伪数组,即使一个元素也是一个数组
+      -document.getElementByClassName('className')返回一个符合条件节点的伪数组,即使一个元素也是一个数组
+      -document.querySelector('选择器') 只返回满足条件的第一个
+      -document.querySelectorAll('选择器')返回一个符合条件节点的伪数组,即使一个元素也是一个数组
+
+    获取设置属性(包括自定义属性)
+    获取: var 属性值  = div.getAttribute('属性名')
+    设置: div.setAttribute('属性名',属性值)
+    删除: div.removeAttribute('属性名')
+
+    文本属性
+      -innerHTML 设置/获取标签里面的内容(认识html标签)
+      -innerText 设置/获取标签里面的内容,所有内容直接获取,不会解析html结构
+
+    设置样式
+
+    下面曹操作的前提
+    (
+      var div = document.getElementByClassName('div')[0]
+    )
+
+    div.style.属性名 = '样式'
+    设置类名
+    div.calssName = '类名'  (这种方法会覆盖原来所有的类名,无论有没有)
+    div.classList.add('类名')  不会覆盖原来额
+    
+    
+    
+    */
+  </script>
+</body>
+</html>

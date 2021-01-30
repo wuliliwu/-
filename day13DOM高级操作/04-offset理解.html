@@ -1,0 +1,53 @@
+<body>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #father {
+            width: 200px;
+            height: 200px;
+            margin-left: 200px;
+            margin-top: 100px;
+            background-color: pink;
+            /* position: relative; */
+        }
+
+        #son {
+            /* position: absolute;
+            top: 100px; */
+            width: 100px;
+            height: 100px;
+            margin-left: 20px;
+            background-color: red;
+        }
+    </style>
+    <div id="father">
+        <div id="son">
+
+        </div>
+    </div>
+    <script>
+        var father = document.getElementById("father");
+        var son = document.getElementById('son')
+        // offsetLeft,offsetTop,偏移量是相對帶有定位的父元素的左邊和上邊的距離
+        // 注意不帶單位
+        // offsetWidth,offsetHeight,返回的是元素的寬高,包含padding,border
+        // offsetParent  返回的是帶有定位的父节点
+        console.log(son.offsetParent);
+        // console.log(son.style.top = 200);
+        console.log(father.offsetLeft);
+        console.log(father.offsetTop);
+        console.log(son.offsetLeft)
+        console.log(son.offsetTop);
+        son.onmousemove = function (e) {
+            e = window.event || e
+            // console.log(e.pageX);
+            // console.log(e.pageY);
+            console.log(e.offsetX);
+            console.log(e.pageX - son.offsetLeft);
+
+        }
+    </script>
+</body>

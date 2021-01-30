@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倒计时</title>
+</head>
+<body>
+  <script>
+  
+    // 生成时间对象
+    function coutdown(date) {
+      var date = new Date()
+      // console.log(date);
+      var hours = date.getHours()
+      var minutes = date.getMinutes()
+      var seconds = date.getSeconds()
+      hours = hours<10?'0'+hours:hours
+      minutes = minutes<10?'0'+minutes:minutes
+      seconds = seconds<10?'0'+seconds:seconds
+      // console.log(hours);
+      // console.log(minutes);
+      // console.log(seconds);
+      console.log('现在是:'+change(hours)+'时'+change(minutes)+'分'+change(seconds)+'秒');
+
+    }
+    // var a = 34
+    // console.log(a.toString());
+    function change(num){
+  
+      var chChar = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖']
+      var arr = ['拾','']
+      var arr1 = num.toString().split('')
+      if (arr1.length<2) {
+        arr1.unshift('0')
+      }
+      var str = ''
+      // console.log(arr1[0]);
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[0] == '0') {
+          str+=chChar[arr1[i]];
+        }else if(arr[0] == '1'){
+          str+=chChar[arr1[i]]+arr[i]
+        }else{
+          str+=chChar[arr1[i]]+arr[i]
+        }
+           
+      }
+      return str
+      // console.log(str);
+      
+    }
+    console.log(change(14));
+    coutdown()
+
+  </script>
+</body>
+</html>

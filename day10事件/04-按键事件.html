@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    123
+  </div>
+
+  <script>
+    // 键盘事件A
+    var arr=new Array(5);
+
+arr[1]=1;
+
+arr[5]=2;
+
+console.log(arr.length)
+    
+    var div = document.querySelector('div')
+    window.document
+    console.log(Math.ceil(-3.14));
+    document.onkeyup = function (e) {
+      e = e || window.event
+      // console.log(e.keyCode);
+      // console.log(e.key);
+
+      console.log(e.shiftKey);
+      if (e.shiftKey && e.keyCode == 65) {
+        console.log(e.shiftKey);
+        div.innerText = 'shift被按下了'
+        console.log('shift被按下了');
+      }
+
+    }
+  </script>
+</body>
+
+</html>

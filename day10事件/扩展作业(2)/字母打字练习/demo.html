@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>打字游戏</title>
+    <!--引入animate.css动画库-->
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        body {
+            margin: 0;
+            /*开启弹性布局，并让弹性布局中的子元素
+                水平居中对齐，垂直居中对齐*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*文字居中*/
+            text-align: center;
+            /*设置背景颜色的经像渐变*/
+            background: radial-gradient(circle, #444, #111, #000);
+        }
+
+        #char {
+            font-size: 400px;
+            color: lightgreen;
+            /*设置文字阴影*/
+            /*text-shadow: 水平位置 垂直位置 模糊距离 阴影颜色*/
+            /*位置可以为负值*/
+            text-shadow: 0 0 50px #666;
+        }
+
+        #result {
+            font-size: 20px;
+            color: #888;
+        }
+
+        /*找到id为char及类名为error的div元素*/
+        #char.error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <mian>
+        <div id="char">A</div>
+        <div id="result">请在按键上按下屏幕上显示的字母</div>
+    </mian>
+</body>
+
+</html>
+
+<script src="../../../公共方法.js"></script>
+<script>
+    // 显示错误的类名效果animated shake error
+    // 显示正确的类名效果animated zoomIn
+    // 获取元素
+    var char = document.getElementById('char')
+    var result = document.getElementById('result')
+
+    // 随机生成字符的ascll码
+    var right = 0
+    var err = 0
+    var charCode
+    function zimu () {
+        charCode = rand(65, 90)
+        // console.log(charCode);
+        char.innerText = String.fromCharCode(charCode)
+    }
+    zimu()
+
+    document.onkeydown = function (e) {
+        var e = e || window.event
+
+        if (e.keyCode == charCode) {
+            char.className = 'animated zoomIn'
+            right++
+            zimu()
+            console.log(right);
+            setTimeout(() => {
+                char.className = ''
+            }, 600);
+        } else {
+            char.className = 'animated shake error'
+            err++
+            console.log(err);
+            setTimeout(() => {
+                char.className = ''
+            }, 600);
+        }
+
+        // 安排上正确率
+        result.innerText = '现在得正确率为:'+(right/(right+err)*100).toFixed(2)+'%'
+
+    }
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      JSON
+       1.JSON.parse :把json字符串转成js对象/数组
+       2.JSON.stringify: 把js对象/数组转化成JSON字符串
+
+       call,apply,bind方法,主要用来改变this的指向
+       1.call  fn.call(thisArg,参数1,参数2,参数3....)
+       2.call  fn.call(thisArg,参数1,参数2,参数3....)
+       call,apply都会调用函数
+       3.bind  fn.bind(thisArg,参数1,参数2,参数3,...)
+       bind不会调用函数,返回值是一个改变this的函数
+
+
+       let/const 
+       let用来声明变量,且可以修改
+       const用来声明常量,且声明时就要赋值,声明后不可以修改
+       let和const都不能重复声明
+       let可以重新赋值,而const不可以
+       let和const都有块级作用域
+
+       箭头函数
+       () => {}
+
+       解构赋值
+
+       var o = {
+         a:1,
+         b:2
+       }
+       const {a,b} = o
+       consoloe.log(a,b) //1,2
+
+       数组解构
+       var arr = [1,2,3,4]
+       var [a1,a2,a3,a4] = arr
+       console.log(a1) //1
+
+       模板字符串
+       语法 ``
+
+       var str =` string`
+       如果需要使用变量,${变量名}
+
+       set集合
+       语法: var set1 = new Set(数组)
+       set元素具有唯一性
+       如 var set2 = new Set([1,2,3,2,1])
+       console.log(set2) //1,2,3
+      //  可以用展开运算符转成数组
+       var newArr = [...set2]
+       console.log(newArr);
+
+       set,添加元素方法 set.add()
+       set,删除元素方法 set.delete()
+       清空set集合方法 set.claer()
+
+       map,类似对象的数据集合
+       键值对一科是任意类型
+       获取方法:get()
+       设置方法:set()
+
+
+
+
+
+
+    */
+  </script>
+</body>
+
+</html>

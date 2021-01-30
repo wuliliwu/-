@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 给一段文章中的全部指定词语进行过滤
+
+    var str = 'asdasdSMasdasdasdSMsdasdasdSMsadasd'
+    // var regs = /S/g
+    // var regm = /M/g
+    // var str = str.replace(regs,'*')
+    // var str = str.replace(regm,'*')
+    // console.log(str);
+
+
+    // var filterArr = ['a','b','s']
+    // for (let i = 0; i < filterArr.length; i++) {
+    //   str = str.split(filterArr[i]).join('*')
+    // }
+    // console.log(str);
+
+    // var arr = [1,4,5,4,3,2]
+    // var str = arr.join('')
+    // console.log(str);
+
+    // var str1 = 'anebrbgbsbfbg'
+    // str1 = str1.split('b')
+    // console.log(str1);
+
+    // var str = 'abccfsddddbad'
+    // var arr = str.split('')
+    // var newArr = []
+    // for (let i = 0; i < arr.length; i++) {
+    //   if (arr.indexOf(arr[i]) == i) {
+    //     newArr.push(arr[i])
+    //   }
+    // }
+    // for (let i = 0; i < newArr.length; i++) { 
+    //   var num = 0
+    //   var index = str.indexOf(newArr[i])
+    //   while (index !== -1) {
+    //     num++
+    //     index=str.indexOf(newArr[i],index+1)
+    //   }
+    //   console.log(newArr[i]+'的次数是:'+num);
+    // }
+
+    // console.log(Math.round(4.4));//4
+    // console.log(Math.round(4.5));//5
+    // console.log(Math.round(4.6));//5
+    // console.log(Math.round(-4.4));//-4
+    // console.log(Math.round(-4.5));//-4
+    // console.log(Math.round(-4.6));//-5
+
+    // console.log(num);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 2.翻转字符串
+    // var str = 'abc1fafas'
+    // var len = str.length
+    // var str1 = ''
+    // for (let i = len-1; i >= 0 ; i--) {
+    //   str1+=str.charAt(i)
+
+    // }
+    // console.log(str1);
+
+
+    // 3.统计字符串中每个字符的个数?
+    var str = 'aabbbbfd'
+    var obj ={}
+    for (let i = 0; i < str.length; i++) {
+      // 进来的字符串
+      var key = str.charAt(i)
+      // console.log(key);
+      // var key = str[i]
+
+      if (key in obj) {
+        obj[key]+=1
+        // obj[key] = 3
+      }else{
+        obj[key] = 1
+      }
+    }
+    // {a:2,b:2}
+    console.log(obj);
+
+
+    // 4. aabccd统计每个字符出现的次数，去掉重复的字符，使结果显示abcd
+    // var str = 'aabccd'
+    // var obj = {}
+    // for (let i = 0; i < str.length; i++) {
+    //   var ch = str.charAt(i)
+    //   if (ch in obj) {
+    //     obj[ch]++
+    //   }else {
+    //     obj[ch] = 1
+    //   }
+    // }
+    // var str1 = ''
+    // for (const key in obj) {
+    //   str1+=key+' '
+    // }
+    // console.log(obj,str1);
+
+
+    // 5.回文数
+
+
+
+
+    // var huiwen = 'abc3ba'
+    // var str1 = ''
+    // for (let i = huiwen.length; i >= 0 ; i--) {
+    //   str1+=huiwen.charAt(i)
+    // }
+    // console.log(huiwen);
+    // if (str1 === huiwen) {
+    //   console.log('这是一个回文数');
+    // }else{
+    //   console.log('这不是一个回文数');
+
+    // }
+
+
+
+    function rand(min, max) {
+      return parseInt(Math.random()*(max-min+1))+min
+    }
+
+  </script>
+</body>
+
+</html>

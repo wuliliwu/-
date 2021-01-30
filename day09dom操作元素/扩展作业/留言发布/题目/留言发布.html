@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style: none;
+			}
+			#con  li {
+				display: block;
+
+			}
+			#con li span {
+				font-size: 10px;
+				margin-left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="t" />
+		<input type="button" value="请留言" id="btn"/>
+		<ul id="con">
+			<li>郑爽是不对的<span>2021/06/22 20:01:17</span></li>
+		</ul>
+
+		<script src="../../../../公共方法.js"></script>
+		<script>
+			var time = dateFormat('YYYY/MM/dd HH:mm:SS',new Date())
+			console.log(time);
+			
+			var text = document.getElementById('t')
+			var btn = document.getElementById('btn')
+			var con = document.getElementById('con')
+			console.log(text);
+			var li = document.createElement('li')
+			
+			
+			btn.onclick = function() {
+				var li = document.createElement('li')
+				var span = document.createElement('span')
+				span.innerText = time
+				li.innerHTML  = text.value
+				li.appendChild(span)
+				con.appendChild(li)
+
+			}
+		</script>
+	</body>
+</html>

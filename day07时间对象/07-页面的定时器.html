@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 300px;
+      height: 100px;
+      border: 10px solid #ccc;
+      margin: 0 auto;
+      background-color: rgb(218, 211, 211);
+    }
+
+    .box span {
+      display: block;
+      width: 40px;
+      height: 40px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      font-size: 25px;
+      font-weight: 800;
+      border-radius: 10px;
+      background-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 style="text-align: center; color: red;">距离过年还有</h2>
+  <div class="box">
+    
+    <span class="day"></span>天
+    <span id='hour'></span>小时
+    <span class="minute"></span>分钟
+    <span class='second'></span>秒
+  </div>
+
+  <script>
+    // 获取元素
+    var day = document.querySelector('.day')
+    var hour = document.getElementById('hour')
+    var minute = document.querySelector('.minute')
+    var second = document.querySelector('.second')
+    var userTime = +new Date('2021-12-31 00:00:00')
+
+    console.log(hour);
+    // console.log(hour);
+    countDown()
+    setInterval(countDown,1000)
+    function countDown(time) {
+      var nowTime = +new Date()
+      var timer = (userTime - nowTime) / 1000 //转换成秒数
+      var days = parseInt(timer / 60 / 60 / 24)
+      days = days < 10 ? '0' + days : days
+      day.innerHTML = days
+
+      var hours = parseInt(timer / 60 / 60 % 24)
+      hours = hours < 10 ? '0' + hours : hours
+      hour.innerHTML = hours
+
+      var minutes = parseInt(timer / 60 % 60)
+      minutes = minutes < 10 ? '0' + minutes : minutes
+      minute.innerHTML = minutes
+
+      var seconds = parseInt(timer % 60)
+      seconds = seconds < 10 ? '0' + seconds : seconds
+      second.innerHTML = seconds
+      return days + '天' + hours + '小时' + minutes + '分钟' + seconds + '秒'
+    }
+  </script>
+</body>
+
+</html>

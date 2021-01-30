@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn1">
+    按钮,点击移动400px
+  </button>
+  <button id="btn2">
+    按钮,点击移动800px
+  </button>
+  <div id="box">
+  </div>
+
+  <script>
+    // var reg = /安/g
+    // console.log(typeof reg);
+    var box = document.getElementById('box')
+    var btn1 = document.getElementById('btn1')
+    var btn2 = document.getElementById('btn2')
+    var flag = true
+    btn1.onclick = function() {
+      move(400)
+    }
+    btn2.onclick = function() {
+      move(800)
+    }
+    function move(target) {
+      clearInterval(box.timer)
+      // 步长等于剩下距离的1/10 
+      box.timer = setInterval(() => { 
+        flag = !flag
+        var distance = target-box.offsetLeft>0?Math.ceil((target-box.offsetLeft)/10):Math.floor((target-box.offsetLeft)/10)
+        box.style.left = box.offsetLeft + distance + 'px'
+        box.style.width =  box.offsetWidth+ (flag?distance:-distance) + 'px'
+        if (box.offsetLeft == target) {
+          clearInterval(box.timer)
+        }
+      }, 20)
+    }
+  </script>
+</body>
+
+</html>

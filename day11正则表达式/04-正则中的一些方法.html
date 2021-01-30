@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // test
+    var reg = /[\d]{2}/g
+    console.log(reg.test('abbb123bbb555'));
+    console.log(reg.test('abbb'));
+    // exec
+    console.log(reg.exec('abbb123bbb555'));
+    console.log(reg.exec('abbb3bbb555'));
+    console.log(reg.exec('abbb')); //没有符合添加的返回null
+
+    // search
+    var str = 'abc123abc12'
+    var str1 = 'abc2'
+    var str2 = 'abc12312'
+    console.log(str.search(reg));
+    console.log(str1.search(reg));
+    console.log(str2.search(reg)); //
+    // match
+    
+    var str = 'abc123abc12'
+    var str1 = 'abc2'
+    var str2 = 'abc12312'
+    console.log(str.match(reg));
+    console.log(str1.match(reg));
+    console.log(str2.match(reg)); //
+
+
+    // replace
+    var str = 'abc123abc12'
+    var str1 = 'abc2'
+    var str2 = 'abc12312'
+    console.log(str.replace(reg,'安安'));
+    console.log(str1.replace(reg,'安安'));
+    console.log(str2.replace(reg,'安安')); //
+
+  </script>
+
+</body>
+
+</html>
