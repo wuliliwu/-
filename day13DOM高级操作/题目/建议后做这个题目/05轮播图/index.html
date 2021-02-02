@@ -1,26 +1,190 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="css/index.css"/>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/index.css" />
 </head>
+
 <body>
-    <div class="slider" id="slider">
-        <div class="slider-img">
-            <ul>
-                <li><a href="#"><img src="images/1.jpg" alt=""/></a></li>
-                <li><a href="#"><img src="images/2.jpg" alt=""/></a></li>
-                <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
-                <li><a href="#"><img src="images/4.jpg" alt=""/></a></li>
-                <li><a href="#"><img src="images/5.jpg" alt=""/></a></li>
-                <li><a href="#"><img src="images/6.jpg" alt=""/></a></li>
-            </ul>
-        </div>
-        <div class="slider-ctrl">
-            <span class="prev" id="prev"></span>
-            <span class="next" id="next"></span>
-        </div>
+  <div class="slider" id="slider">
+    <div class="slider-img">
+      <ul>
+        <li><a href="#"><img src="images/1.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/2.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/3.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/4.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/5.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/6.jpg" alt="" /></a></li>
+      </ul>
     </div>
+    <div class="slider-ctrl">
+
+      <span class="prev" id="prev"></span>
+      <span class="next" id="next"></span>
+    </div>
+  </div>
+  <script>
+    // 2021年2月2日15:42:14
+      /* 
+        需求分析:
+            1 根据图片的数量生成相同的小圆点，类名是slider-ctrl-con
+            2 显示第一个图片，同时第一个小圆点高亮，类名是:slider-ctrl-con current;
+            3 点击prev显示上一张图片，同时对应小圆点高亮
+            4 点击next显示下一张图片，同时对应小圆点高亮
+            5 点击小圆点，切换到对应的图片，同时小圆点高亮
+            6 可以自动轮播（每隔3000ms自动切换到下一张）
+            7 鼠标移入slider盒子，停止轮播
+            8 鼠标移出slider盒子，继续轮播
+    */
+
+    // 需求分析
+    // 2021年2月1日21:00:56
+    /* 
+    1.根据图片的数量生成对应的小圆点插入在
+    2.页面打开,显示第一张图,其他的小时
+    3.点击左右按钮,可以切换图片
+    4.点击小圆点,可以切换相应索引的图片
+    5.自动轮播
+    */
+    // 1.根据图片的数量生成对应的小圆点插入在
+    window.onload = function () {
+      // 获取元素
+      // 获取元素
+      var sliderDiv = document.getElementById('slider') //总容器
+      var imgArr = sliderDiv.children[0].children[0].children; //所有图片li集合
+      var prev = document.getElementById('prev'); //上一张按钮
+      var next = document.getElementById('next'); //下一张按钮
+      var ctrlDiv = prev.parentNode; //控制按钮所在容器
+      // 定义一个变量，记录当前显示的是图片的索引/小圆点的索引
+      var index = 0; // 他的范围是[0,imgArr.length-1]
+      // 定义一个变量，记录一个图片的宽度
+      var width = sliderDiv.offsetWidth;
+      // 1.根据图片的数量生成对应的小圆点插入在
+      for (let i = imgArr.length - 1; i >= 0; i--) {
+        var point = document.createElement('span')
+        point.className = "slider-ctrl-con";
+        point.innerHTML = i
+        //  插入
+        ctrlDiv.insertBefore(point, ctrlDiv.children[0])
+        imgArr[i].style.left = width + 'px'
+      }
+      var spanArr = ctrlDiv.children
+      imgArr[index].style.left = 0
+      dot()
+      //  3.点击左右按钮,可以切换图片
+      ctrlDiv.onclick = function (e) {
+        e = window.event || e
+        var target = e.target || e.srcElement
+        if (target.className == 'prev') {
+          var next = index - 1
+          if (next < 0) {
+            next = imgArr.length - 1
+        }
+            imgArr[next].style.left = -width + 'px'
+            move(imgArr[next], { left: 0 })
+            move(imgArr[index],{ left: width })
+            index = next
+            dot()
+          
+        }else if(target.className == 'next') {
+          next1()
+        
+        }else if(target.className.indexOf('slider-ctrl-con')>-1){
+          // 获取点击的索引
+          var next = parseInt(target.innerHTML)
+          if (next > index) {
+            imgArr[next].style.left = width + 'px'
+            move(imgArr[next],{left:0})
+            move(imgArr[index],{left:-width})
+            index = next
+            dot()
+          }else if(next<index){
+            imgArr[next].style.left = -width + 'px'
+            move(imgArr[next],{left:0})
+            move(imgArr[index],{left:width})
+            index = next
+            dot()
+
+          }
+        }
+      }
+      setInterval(() => {
+        next.click()
+      },2000)
+      
+      function next1(){
+        var next = index + 1
+          if (next > imgArr.length-1) {
+            next = 0
+        }
+            imgArr[next].style.left = width + 'px'
+            move(imgArr[next], { left: 0 })
+            move(imgArr[index],{ left: -width })
+            index = next
+            dot()
+      }
+
+      // 原点显示光亮
+      function dot() {
+        for (let i = 0; i < imgArr.length; i++) {
+          spanArr[i].className = "slider-ctrl-con";
+        }
+        spanArr[index].className = "slider-ctrl-con current";
+
+      }
+    }
+
+    function getStyle(obj, key) {
+      if (obj.currentStyle) {
+        return obj.currentStyle[key]
+      } else {
+        return window.getComputedStyle(obj, null)[key]
+      }
+    }
+    // 目标对象,属性,属性值,回调函数
+    // 写动画步骤
+    // 1.清除定时器
+    // 2.开启定时器
+    // 3.判断属性是不是opacity,获取属性不同
+    // 4.定义速度speed,正值向上取整,负值向下取整
+    // 5.临界值停止定时器
+
+    function move(obj, target, callback) {
+      clearInterval(obj.timer)
+      obj.timer = setInterval(function () {
+        var flag = true
+        for (const key in target) {
+          if (key == 'opacity') {
+            var current = parseInt(getStyle(obj, key) * 100)
+          } else {
+            // console.log(111);
+            var current = parseInt(getStyle(obj, key))
+          }
+          // 定义速度
+          var speed = target[key] > current ? Math.ceil((target[key] - current) / 10) : Math.floor((target[key] - current) / 10)
+
+          // 下一次的值
+          var next = current + speed
+          if (key == 'opacity') {
+            obj.style[key] = next / 100
+            obj.style.filter = 'alpha(opacity=' + next + ')'
+          } else if (key == 'zIndex') {
+            obj.style[key] = target[key]
+          } else {
+            obj.style[key] = next + 'px'
+          }
+          if (next != target[key]) {
+            flag = false
+          }
+        }
+        if (flag) {
+          clearInterval(obj.timer)
+        }
+      }, 10)
+    }
+  </script>
 </body>
+
 </html>

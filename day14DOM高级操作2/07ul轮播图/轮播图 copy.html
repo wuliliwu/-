@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>轮播图</title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 0;
+    }
+
+    .all {
+      width: 500px;
+      height: 200px;
+      padding: 7px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      position: relative;
+    }
+
+
+    .screen li {
+      width: 500px;
+      height: 200px;
+      overflow: hidden;
+      float: left;
+    }
+
+    .screen ul {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 3000px;
+    }
+
+    .all ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      line-height: 20px;
+      text-align: center;
+      z-index: 99;
+    }
+
+    .all ol li {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .all ol li.current {
+      background: yellow;
+    }
+
+    /*#arr {display: none;}*/
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.5;
+      user-select: none;
+      border: 1px solid #fff;
+    }
+
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+
+    .screen {
+      width: 500px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="all" id='all'>
+    <div class="screen" id="screen">
+      <ul id="ul">
+        <li><img src="images/1.jpg" width="500" height="200" /></li>
+        <li><img src="images/2.jpg" width="500" height="200" /></li>
+        <li><img src="images/3.jpg" width="500" height="200" /></li>
+        <li><img src="images/4.jpg" width="500" height="200" /></li>
+        <li><img src="images/5.jpg" width="500" height="200" /></li>
+     
+      </ul>
+      <ol>
+      </ol>
+      <div id="arr">
+        <span id="left">
+          <</span>
+           <span id="right">>
+        </span></div>
+    </div>
+  </div>
+  <script src="../../公共方法.js"></script>
+
+
+  <script>
+  window.onload = function() {
+    var screen = document.getElementById('screen')
+    var ul = document.getElementById('ul')
+    var left = document.getElementById('left')
+    var right =document.getElementById('right')
+    var width = screen.offsetWidth
+    liImgs = ul.children
+    var circle = 0
+    // 根据图片数量生成小圆点
+    for (let i = 0; i < liImgs.length; i++) {
+      var li = document.createElement('li')
+      li.setAttribute('index',i)
+      li.innerHTML = i+1
+      screen.children[1].appendChild(li)
+      li.onclick = function() {
+        for (let i = 0; i < screen.children[1].children.length; i++) {
+          screen.children[1].children[i].className = ''
+        }
+        this.className = 'current'
+        // 点击小圆圈,移动图片
+        var index = this.getAttribute('index')
+        num = index
+        circle = index
+        move(ul,{left:-index*width})
+      }
+    }
+    screen.children[1].children[0].className = 'current'
+    var num = 0
+
+    // 克隆图片
+    var  first = ul.children[0].cloneNode(true)
+    ul.appendChild(first)
+
+    right.onclick= function() {
+      if (num == liImgs.length-1) { 
+        ul.style.left = 0
+        num = 0
+      }
+      num++
+
+      move(ul,{left:-num*width})
+      circle++
+      if (circle == liImgs.length-1) {
+        circle = 0
+      }
+      for (let i = 0; i < screen.children[1].children.length; i++) {
+        screen.children[1].children[i].className = ''
+        
+      }
+      screen.children[1].children[circle].className = 'current'
+    }
+    left.onclick = function() {
+      if (num == 0) {
+        ul.style.left = -width*(liImgs.length-1) + 'px'
+        num = liImgs.length-1
+      } 
+      num --
+      move(ul,{left:-num*width})
+      circle--
+      if (circle < 0) {
+        circle = liImgs.length-2
+      }
+      for (let i = 0; i < screen.children[1].children.length; i++) {
+        screen.children[1].children[i].className = ''
+        
+      }
+      screen.children[1].children[circle].className = 'current'
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+  </script>
+</body>
+
+</html>

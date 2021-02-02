@@ -1,109 +1,334 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<style type="text/css">
-*{margin:0;padding:0;font: 12px/1.25 tahoma,arial,宋体,sans-serif;}
-li{list-style:none;}
-a{text-decoration:none;}
-body{width:100%;height:100%;background:#000;_position:relative;overflow:hidden;}
-.page{position:fixed;_position:absolute;right:0;bottom:0;}
-#nav{height: 22px;margin: 5px 0 0 43px;width: 125px;}
-#nav li{float: left;width: 25px;}
-#nav li a{display: block;height: 22px;width: 25px;}
-#nav li .show,#nav li a:hover{background: url(minibar.png) no-repeat 0 -51px;}
-#nav .li_1 .show,#nav .li_1 a:hover{background-position:-25px -51px}
-#nav .li_2 .show,#nav .li_2 a:hover{background-position:-50px -51px}
-#nav .li_3 .show,#nav .li_3 a:hover{background-position:-75px -51px}
-#nav .li_4 .show,#nav .li_4 a:hover{background-position:-100px -51px}
-.qf{color: #FFFFFF;height: 16px;margin: 4px 0 0 8px;overflow: hidden;width: 160px;}
-#but{ bottom: 0;display: block;height: 50px;position: absolute;right: 0;width: 33px;z-index:20002;}
-.but_hide{background: url(minibar.png) no-repeat -170px 0;}
-.but_hide:hover{background-position:-203px 0;}
-.but_show{background: url(minibar.png) no-repeat -236px 0;}
-.but_show:hover{background-position:-269px 0;}
-#qf_bottom{width:203px;height: 50px;background:url(minibar.png) no-repeat 0 0;position:absolute;right:-165px;bottom:0;z-index: 20001;}
-#qf_box{bottom:-315px;display:none;height: 315px;padding: 0 0 48px;position: absolute;right: 1px;width: 200px; z-index: 20000;}
-.bg{background: url(mini_jpgs.jpg) no-repeat 0 0;height: 315px;opacity: 0.9;position: absolute;right: 0;top: 0;width: 200px;}
-.nav2_bg{bottom: 48px;height: 176px;left: 0;position: absolute;width: 34px;background: url(mini_jpgs.jpg) no-repeat 0 -139px;}
-#list_nav{background: url(minibar.png) no-repeat scroll 0 -255px transparent;height: 139px;left: 0;position: absolute;top: 2px;width: 34px;}
-#list_nav a{ color: #FFFFFF;display: block;height: 27px;line-height: 25px;text-align: center;text-decoration: none;}
-#list_nav .show{color: #FF9900;}
-#list_nav a:hover{color:#FFFF00;}
-.clos{ background: url(minibar.png) no-repeat 0 -76px ;cursor: pointer;height: 9px;position: absolute;right: 10px;top: 14px;width: 9px;}
-.box_right{color: #FFFFFF;
-    height: 285px;
-    overflow: hidden;
-    position: absolute;
-    right: 6px;
-    top: 28px;
-    width: 150px;}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>无标题文档</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      font: 12px/1.25 tahoma, arial, 宋体, sans-serif;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      _position: relative;
+      overflow: hidden;
+    }
+
+    .page {
+      position: fixed;
+      _position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    #nav {
+      height: 22px;
+      margin: 5px 0 0 43px;
+      width: 125px;
+    }
+
+    #nav li {
+      float: left;
+      width: 25px;
+    }
+
+    #nav li a {
+      display: block;
+      height: 22px;
+      width: 25px;
+    }
+
+    #nav li .show,
+    #nav li a:hover {
+      background: url(minibar.png) no-repeat 0 -51px;
+    }
+
+    #nav .li_1 .show,
+    #nav .li_1 a:hover {
+      background-position: -25px -51px
+    }
+
+    #nav .li_2 .show,
+    #nav .li_2 a:hover {
+      background-position: -50px -51px
+    }
+
+    #nav .li_3 .show,
+    #nav .li_3 a:hover {
+      background-position: -75px -51px
+    }
+
+    #nav .li_4 .show,
+    #nav .li_4 a:hover {
+      background-position: -100px -51px
+    }
+
+    .qf {
+      color: #FFFFFF;
+      height: 16px;
+      margin: 4px 0 0 8px;
+      overflow: hidden;
+      width: 160px;
+    }
+
+    #but {
+      bottom: 0;
+      display: block;
+      height: 50px;
+      position: absolute;
+      right: 0;
+      width: 33px;
+      z-index: 20002;
+    }
+
+    .but_hide {
+      background: url(minibar.png) no-repeat -170px 0;
+    }
+
+    .but_hide:hover {
+      background-position: -203px 0;
+    }
+
+    .but_show {
+      background: url(minibar.png) no-repeat -236px 0;
+    }
+
+    .but_show:hover {
+      background-position: -269px 0;
+    }
+
+    #qf_bottom {
+      width: 203px;
+      height: 50px;
+      background: url(minibar.png) no-repeat 0 0;
+      position: absolute;
+      right: -165px;
+      bottom: 0;
+      z-index: 20001;
+    }
+
+    #qf_box {
+      bottom: -315px;
+      display: none;
+      height: 315px;
+      padding: 0 0 48px;
+      position: absolute;
+      right: 1px;
+      width: 200px;
+      z-index: 20000;
+    }
+
+    .bg {
+      background: url(mini_jpgs.jpg) no-repeat 0 0;
+      height: 315px;
+      opacity: 0.9;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 200px;
+    }
+
+    .nav2_bg {
+      bottom: 48px;
+      height: 176px;
+      left: 0;
+      position: absolute;
+      width: 34px;
+      background: url(mini_jpgs.jpg) no-repeat 0 -139px;
+    }
+
+    #list_nav {
+      background: url(minibar.png) no-repeat scroll 0 -255px transparent;
+      height: 139px;
+      left: 0;
+      position: absolute;
+      top: 2px;
+      width: 34px;
+    }
+
+    #list_nav a {
+      color: #FFFFFF;
+      display: block;
+      height: 27px;
+      line-height: 25px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    #list_nav .show {
+      color: #FF9900;
+    }
+
+    #list_nav a:hover {
+      color: #FFFF00;
+    }
+
+    .clos {
+      background: url(minibar.png) no-repeat 0 -76px;
+      cursor: pointer;
+      height: 9px;
+      position: absolute;
+      right: 10px;
+      top: 14px;
+      width: 9px;
+    }
+
+    .box_right {
+      color: #FFFFFF;
+      height: 285px;
+      overflow: hidden;
+      position: absolute;
+      right: 6px;
+      top: 28px;
+      width: 150px;
+    }
+  </style>
 
 </head>
-<body>
-<div class="page">
-	<!--这个从右往左 -->
-	<div id="qf_bottom">
-		<ul id='nav'>
-			<li><a href="###"></a></li>
-			<li class='li_1'><a href="###"></a></li>       
-			<li class='li_2'><a href="###"></a></li>       
-			<li class='li_3'><a href="###"></a></li>       
-			<li class='li_4'><a href="###"></a></li>      
-		</ul>
-		<h2 class="qf">千锋JQ</h2>
-	</div>
-	<a class="but_show" id="but" href="###"></a>
-	<!-- 这个是从下往上 -->
-	<div id="qf_box">
-		<div class="bg"></div>
-		<div class="nav2_bg"></div>
-		<ul id="list_nav">       
-			<li><a  class="show" href="#" target="_blank">天气</a></li>
-			<li class="tab2"><a href="#" target="_blank">星座</a></li>
-			<li class="tab3"><a href="#" target="_blank">排行</a></li>
-			<li class="tab4"><a href="#" target="_blank">热点</a></li>
-			<li class="tab5"><a href="#" target="_blank">直播</a></li>
-		</ul>
-		<a class='clos' id="btn_close"></a>
 
-		<div class="box_right">  
-			<div>北京</div>      
-				<div>    
-					<div>     
-						<strong><em>今天</em> (周二)</strong>           
-						<img title="晴" src="01.gif" class="pic">         
-					</div>    
-					<span>-1~10C°</span>
-					<span>晴</span>
-					<span>微风小于3级</span>   
-				</div>      
-				<div >    
-					<div>     
-						<strong><em>明天</em> (周三)</strong>           
-						<img title="多云" src="02.gif" class="pic">         
-					</div>    
-					<span>0~11C°</span>
-					<span>多云</span>
-					<span>北风3-4级</span>   
-				</div>      
-				<div>    
-					<div>     
-						<strong><em>后天</em> (周四)</strong>           
-						<img title="晴" src="01.gif" class="pic">         
-					</div>    
-					<span>-1~12C°</span>
-					<span>晴</span>
-					<span>北风3-4级 转 微风小于3级</span>   
-				</div>     
-			</div>
-		</div>
-	</div>
-</div>  
+<body>
+  <div class="page">
+    <!--这个从右往左 -->
+    <div id="qf_bottom">
+      <ul id='nav'>
+        <li><a href="###"></a></li>
+        <li class='li_1'><a href="###"></a></li>
+        <li class='li_2'><a href="###"></a></li>
+        <li class='li_3'><a href="###"></a></li>
+        <li class='li_4'><a href="###"></a></li>
+      </ul>
+      <h2 class="qf">千锋JQ</h2>
+    </div>
+    <a class="but_show" id="but" href="###"></a>
+    <!-- 这个是从下往上 -->
+    <div id="qf_box">
+      <div class="bg"></div>
+      <div class="nav2_bg"></div>
+      <ul id="list_nav">
+        <li><a class="show" href="#" target="_blank">天气</a></li>
+        <li class="tab2"><a href="#" target="_blank">星座</a></li>
+        <li class="tab3"><a href="#" target="_blank">排行</a></li>
+        <li class="tab4"><a href="#" target="_blank">热点</a></li>
+        <li class="tab5"><a href="#" target="_blank">直播</a></li>
+      </ul>
+      <a class='clos' id="btn_close"></a>
+
+      <div class="box_right">
+        <div>北京</div>
+        <div>
+          <div>
+            <strong><em>今天</em> (周二)</strong>
+            <img title="晴" src="01.gif" class="pic">
+          </div>
+          <span>-1~10C°</span>
+          <span>晴</span>
+          <span>微风小于3级</span>
+        </div>
+        <div>
+          <div>
+            <strong><em>明天</em> (周三)</strong>
+            <img title="多云" src="02.gif" class="pic">
+          </div>
+          <span>0~11C°</span>
+          <span>多云</span>
+          <span>北风3-4级</span>
+        </div>
+        <div>
+          <div>
+            <strong><em>后天</em> (周四)</strong>
+            <img title="晴" src="01.gif" class="pic">
+          </div>
+          <span>-1~12C°</span>
+          <span>晴</span>
+          <span>北风3-4级 转 微风小于3级</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var btn = document.querySelector('#but')
+    var qfBottom = document.querySelector('#qf_bottom')
+    var qfBox = document.querySelector('#qf_box')
+    var btn_close = document.querySelector('#btn_close')
+
+    //1 点击but按钮,qf_bottom从-165变成0,然后qf_box显示,从-315变成0
+    btn.onclick = function () {
+      move(qfBottom, { right: 0 }, function () {
+        qfBox.style.display = 'block'
+        move(qfBox, { bottom: 0 })
+      })
+    }
+    btn_close.onclick = function () {
+
+      move(qfBox, { bottom: -315 }, function () {
+        qfBox.style.display = 'none'
+        move(qfBottom, { right: -165 })
+      })
+    }
+
+
+    function move(obj, target, callback) {
+      // obj,targer,attr,callback.目标对象.目标结果,属性,回调函数
+      clearInterval(obj.timer)
+      obj.timer = setInterval(function () {
+        var flag = true
+        for (var key in target) {
+          // console.log(target[key]);
+          if (key === 'opacity') {
+            var current = parseInt(getStyle(obj, key) * 100)
+          } else {
+            var current = parseInt(getStyle(obj, key))
+          }
+          var speed = y = target[key] > current ? Math.ceil((target[key] - current) / 10) : Math.floor((target[key] - current) / 10)
+          if (key === 'zIndex') {
+            var next = target[key]
+          } else {
+            var next = current + speed
+          }
+          if (key == 'zIndex') {
+            obj.style[key] = target
+          } else if (key == 'opacity') {
+            obj.style.opacity = next / 100
+            obj.style.filter = 'alpha(opacity=' + next + ')'
+          } else {
+            obj.style[key] = next + 'px'
+          }
+          if (next != target[key]) {
+            flag = false;
+          }
+
+        }
+        if (flag) {
+
+          clearInterval(obj.timer)
+          callback && callback()
+          // return
+        }
+      }, 20)
+    }
+    function getStyle(obj, attr) {
+      if (obj.currentStyle) {
+        return obj.currentStyle[attr]
+      } else {
+        return window.getComputedStyle(obj, null)[attr]
+      }
+    }
+  </script>
 
 </body>
-</html>
 
- 
+</html>

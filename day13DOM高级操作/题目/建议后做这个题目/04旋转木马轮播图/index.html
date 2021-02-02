@@ -1,26 +1,150 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>旋转木马轮播图</title>
-    <link rel="stylesheet" href="css/css.css"/>
-</head>
-<body>
-<div class="wrap" id="wrap">
-   <div class="slide" id="slide">
-       <ul>
-           <li><a href="#"><img src="images/1.webp" alt=""/></a></li>
-           <li><a href="#"><img src="images/2.webp" alt=""/></a></li>
-           <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
-           <li><a href="#"><img src="images/4.webp" alt=""/></a></li>
-           <li><a href="#"><img src="images/5.jpg" alt=""/></a></li>
-       </ul>
-       <div class="arrow" id="arrow">
-           <a href="javascript:;" class="prev" id="prev"></a>
-           <a href="javascript:void(0);" class="next" id="next"></a>
-       </div>
-   </div>
-</div>
 
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>旋转木马轮播图</title>
+  <link rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+  <div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+      <ul>
+        <li><a href="#"><img src="images/1.webp" alt="" /></a></li>
+        <li><a href="#"><img src="images/2.webp" alt="" /></a></li>
+        <li><a href="#"><img src="images/3.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/4.webp" alt="" /></a></li>
+        <li><a href="#"><img src="images/5.jpg" alt="" /></a></li>
+      </ul>
+      <div class="arrow" id="arrow">
+        <a href="javascript:;" class="prev" id="prev"></a>
+        <a href="javascript:void(0);" class="next" id="next"></a>
+      </div>
+    </div>
+  </div>
+  <script>
+       function getStyle(obj,key) {
+      if (obj.currentStyle) {
+        return obj.currentStyle[key]
+      }else {
+        return window.getComputedStyle(obj,null)[key]
+      }
+    }
+    // 目标对象,属性,属性值,回调函数
+    // 写动画步骤
+    // 1.清除定时器
+    // 2.开启定时器
+    // 3.判断属性是不是opacity,获取属性不同
+    // 4.定义速度speed,正值向上取整,负值向下取整
+    // 5.临界值停止定时器
+    
+    function move(obj,target,callback) {
+      clearInterval(obj.timer)
+      obj.timer = setInterval(function() {
+        var flag = true
+       for (const key in target) {
+        if (key == 'opacity') {
+          var current = parseInt(getStyle(obj,key)*100)
+        } else {
+          // console.log(111);
+          var current = parseInt(getStyle(obj,key))
+        }
+        // 定义速度
+        var speed = target[key]>current?Math.ceil((target[key]-current)/10):Math.floor((target[key]-current)/10)
+        
+        // 下一次的值
+        var next = current + speed
+        if (key == 'opacity') {
+          obj.style[key] = next/100
+          obj.style.filter = 'alpha(opacity=' + next + ')'
+        }else if(key == 'zIndex'){
+          obj.style[key] = target[key]
+        }else{
+          obj.style[key] = next + 'px'
+        }
+        if (next != target[key]) {
+          flag = false
+        }
+         }
+         if (flag) {
+           clearInterval(obj.timer)
+         }
+        },10)
+      }
+     
+    var json = [
+    {
+      "width": 400,
+      "top": 20,
+      "left": 50,
+      "opacity": 20,
+      "zIndex": 2
+    },
+    {
+      "width": 600,
+      "top": 70,
+      "left": 0,
+      "opacity": 80,
+      "zIndex": 3
+    },
+    {
+      "width": 800,
+      "top": 100,
+      "left": 200,
+      "opacity": 100,
+      "zIndex": 4
+    },
+    {
+      "width": 600,
+      "top": 70,
+      "left": 600,
+      "opacity": 80,
+      "zIndex": 3
+    },
+    {
+      "width": 400,
+      "top": 20,
+      "left": 750,
+      "opacity": 20,
+      "zIndex": 2
+    }]
+
+    // 页面一打开,每个li缓动到相应位置
+    // 鼠标移入,slide箭头显示
+    // 鼠标点击左箭头,prev显示上一张
+    // 鼠标点击next,显示下张
+
+    var arrow = document.getElementById('arrow')
+    var prev = document.getElementById('prev')
+    var next = document.getElementById('next')
+    var slideDiv = document.getElementById('slide')
+    var liArr = slideDiv.children[0].children
+    show()
+    prev.onclick = function() {
+      // 原始的
+      // 0 1 2 3 4 
+      // 1 2 3 4 0
+      var temp = json.shift()
+      json.push(temp)
+      show()
+    }
+    next .onclick = function() {
+      // 0 1 2 3 4
+      // 4 3 2 1 0
+      var temp = json.pop()
+      json.unshift(temp)
+      show()
+
+    }
+   
+    function show() {
+      for (let i = 0; i < liArr.length; i++) {
+        move(liArr[i],json[i])
+      }
+    }
+
+  </script>
 </body>
+
 </html>

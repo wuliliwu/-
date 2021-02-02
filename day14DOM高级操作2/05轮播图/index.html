@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <div class="slider" id="slider">
+    <div class="slider-img">
+      <ul>
+        <li><a href="#"><img src="images/1.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/2.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/3.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/4.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/5.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="images/6.jpg" alt="" /></a></li>
+      </ul>
+    </div>
+    <div class="slider-ctrl">
+
+      <span class="prev" id="prev"></span>
+      <span class="next" id="next"></span>
+    </div>
+  </div>
+  <script src="../../公共方法.js"></script>
+  <script>
+    // 2021年2月2日15:42:14
+    /* 
+        需求分析:
+            1 根据图片的数量生成相同的小圆点，类名是slider-ctrl-con
+            2 显示第一个图片，同时第一个小圆点高亮，类名是:slider-ctrl-con current;
+            3 点击prev显示上一张图片，同时对应小圆点高亮
+            4 点击next显示下一张图片，同时对应小圆点高亮
+            5 点击小圆点，切换到对应的图片，同时小圆点高亮
+            6 可以自动轮播（每隔3000ms自动切换到下一张）
+            7 鼠标移入slider盒子，停止轮播
+            8 鼠标移出slider盒子，继续轮播
+    */
+
+    window.onload = function () {
+      var slider = document.getElementById('slider')
+      var ul = document.getElementsByTagName('ul')[0]
+      var btnBox = document.getElementsByClassName('slider-ctrl')[0]
+
+      liImgs = ul.children //图片集合
+      var prev = document.getElementById('prev')
+      var next = document.getElementById('next')
+      var index = 0 //定义一个全局变量
+      var width = slider.offsetWidth
+      for (let i = liImgs.length - 1; i >= 0; i--) {
+        var span = document.createElement('span')
+        span.className = 'slider-ctrl-con'
+        // span.num = i
+        span.innerHTML = i
+        btnBox.insertBefore(span, btnBox.children[0])
+        liImgs[i].style.left = width + 'px'
+
+      }
+
+
+      // 获取所有的小圆点
+      var lisArr = btnBox.children
+      liImgs[index].style.left = 0
+      // 点亮小圆点   
+      light()
+      // 显示第一个图片，同时第一个小圆点高亮，类名是:slider-ctrl-con current;
+
+      // 点击左边按钮
+      prev.onclick = function () {
+        var next = index - 1;
+        var next = index - 1
+        if (next < 0) {
+          next = liImgs.length - 1
+        }
+        liImgs[next].style.left = -width + 'px'
+        move(liImgs[next], { left: 0 })
+        move(liImgs[index], { left: width })
+        index = next
+        light()
+      }
+
+      next.onclick = function () {
+        autoplay()
+      }
+
+      function autoplay() {
+        var next = index + 1;
+        if (next > liImgs.length - 1) {
+          next = 0;
+        }
+        liImgs[next].style.left = width + "px";
+        move(liImgs[next], { left: 0 })
+        move(liImgs[index], { left: -width })
+        index = next;
+        light()
+      }
+      // 自动轮播
+      timer = setInterval(() => {
+        autoplay()
+      }, 2000)
+      slider.onmouseenter = function () {
+        clearInterval(timer)
+      }
+      slider.onmouseleave = function () {
+        timer = setInterval(() => {
+          autoplay()
+        }, 2000)
+      }
+
+      for (let i = 0; i < liImgs.length; i++) {
+        lisArr[i].onclick = function () {
+          var next = parseInt(this.innerHTML)
+          if (next > index) {
+            liImgs[next].style.left = width + "px";
+            move(liImgs[next], { left: 0 })
+            move(liImgs[index], { left: -width })
+            index = next;
+            light()
+          } else {
+            liImgs[next].style.left = -width + 'px'
+            move(liImgs[next], { left: 0 })
+            move(liImgs[index], { left: width })
+            index = next
+            light()
+          }
+        }
+      }
+
+      function light() {
+        // 清除所有人
+        for (let i = 0; i < liImgs.length; i++) {
+          lisArr[i].className = 'slider-ctrl-con'
+        }
+        lisArr[index].className = 'slider-ctrl-con current'
+      }
+    }
+  </script>
+</body>
+
+</html>

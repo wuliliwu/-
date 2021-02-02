@@ -79,7 +79,7 @@
         e.stopPropagation();
 
       })
-      small.addEventListener('mousemove', function () {
+      small.addEventListener('mousemove', function (e) {
         e = window.event || e
         var x = e.pageX - this.parentNode.offsetLeft - mask.offsetWidth / 2
         var y = e.pageY - this.parentNode.offsetTop - mask.offsetHeight / 2

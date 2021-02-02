@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      /* margin: 50px; */
+      position:absolute;
+      left: 0px;
+      top: 0;
+      background-color: red;
+      opacity: .4;
+      filter: alpha(cpacity=40);
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    var  box = document.querySelector('.box')
+    box.onmouseenter = function() {
+      var target = {
+        width:300,
+        height:300,
+        opacity:90,
+        zIndex:999,
+        // left:100
+      }
+      move(box,target)
+    }
+    box.onmouseout = function() {
+      var target = {
+        width:100,
+        height:100,
+        opacity:30,
+        zIndex:1,
+        // left:100
+      }
+      move(box,target)
+
+    }
+    
+    function move(obj,target,callback) { 
+      var flag = true
+      // console.log(attr);
+      // obj,targer,attr,callback.目标对象.目标结果,属性,回调函数
+      clearInterval(obj.timer)
+      obj.timer = setInterval(function() {
+        for (var key in target) {
+          // console.log(target[key]);
+          if (key === 'opacity') {
+          var current = parseInt(getStyle(obj,key)*100)
+        }else {
+           var current = parseInt(getStyle(obj,key))
+        }
+        var speed = y=target[key]>current?Math.ceil((target[key]-current)/10):Math.floor((target[key]-current)/10)
+        if (key === 'zIndex') {
+          var next = target[key]
+        }else{
+          var next = current + speed
+        }
+        if (key == 'zIndex') {
+          flag = false
+          obj.style[key] = next
+        }else if(key == 'opacity') {
+          flag = false
+          obj.style.opacity = next/100
+          // obj.style.filter = `alpha(opacity=${next})`
+          obj.style.filter ='alpha(opacity='+next+')'
+        }else {
+          flag = false
+          obj.style[key] = next + 'px'
+        }
+        if (flag) {
+          clearInterval(obj.timer)
+          callback&&callback()
+        }
+        }
+      },20)
+
+     }
+     function getStyle(obj,attr) {
+      if (obj.currentStyle) {
+        return  obj.currentStyle[attr]
+      }else{
+        return window.getComputedStyle(obj,null)[attr]
+      }
+    }
+  </script>
+</body>
+</html>

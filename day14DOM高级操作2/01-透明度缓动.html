@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      margin: 50px;
+      background-color: red;
+      opacity: .8;
+      filter: alpha(cpacity=80);
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    var box = document.querySelector('.box')
+    box.addEventListener('mouseenter',function() {
+      opacity(box,10)
+    })
+    box.addEventListener('mouseleave',function() {
+      opacity(box,100)
+    })
+
+    // 封装成一个函数
+    function opacity(obj,target,callback) {
+      clearInterval(obj.timer)
+      obj.timer = setInterval(() => {
+        // 获取元素当前透明度
+        var current = parseInt(getStyle(obj,'opacity')*100)
+        console.log(current);
+        // 速度
+        var speed = target>current?5:-5
+        var next = current + speed
+        if (next === target) {
+          clearInterval(obj.timer)
+        }else {
+          obj.style.opacity = next/100
+          obj.style.filter = `alpha(opacity=${next})`
+        }
+
+      },20)
+    }
+    function getStyle(obj,attr) {
+      if (obj.currentStyle) {
+        return  obj.currentStyle[attr]
+      }else{
+        return window.getComputedStyle(obj,null)[attr]
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box {
+      position:absolute;
+      left:0;
+      top:0;
+      width: 100px;
+      height: 100px;
+      opacity: .5;
+      border-radius: 50%;
+      filter: alpha(opacity = 50);
+      background-color: rgb(56, 184, 56);
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    // 2021年2月1日14:24:39
+    var box = document.getElementById('box')
+    box.onclick = function() {
+      var target = {
+        width:300,
+        height:300,
+        opacity:100,
+        zIndex:1,
+        left:100
+      }
+      move(box,target)
+    }
+    box.ondblclick = function() {
+      var target = {
+        width:100,
+        height:100,
+        opacity:30,
+        zIndex:1,
+        left:0
+      }
+      move(box,target)
+    }
+
+    // box.onclick = function() {
+    //   move(box,100,'zIndex')
+    // }
+    // 封装获取属性的函数
+    function getStyle(obj,key) {
+      if (obj.currentStyle) {
+        return obj.currentStyle[key]
+      }else {
+        return window.getComputedStyle(obj,null)[key]
+      }
+    }
+
+    // 封装动画函数
+
+    // 可以传入多值假设可以传入目标,终点值,属性,回调函数,本函数兼容ie8以下版本
+    function move(obj,target,callback) {
+      // 清除定时器
+      var flag = true
+      clearInterval(obj.timer)
+      obj.timer = setInterval(function() {
+        for (var key in target) {
+          if (key == 'opacity') {
+          var current = parseInt(getStyle(obj,key)*100)
+        }else{
+          var current = parseInt(getStyle(obj,key))
+        }
+        // 定义渐变的速度正值向上取整,负值向下取整,这是缓动动画的关键
+        var speed = target[key]>current?Math.ceil((target[key]-current)/10):Math.floor((target[key]-current)/10)
+        // 定义下一次的变化的值,等于当前的加上速度
+        var next = current + speed
+        if (key === 'zIndex') {
+          flag = false
+          obj.style[key] = target[key]
+        }else if(key === 'opacity') {
+          flag = false
+          obj.style[key] = next/100
+          obj.style.filter ='alpha(opacity='+next+')'
+        }else{
+          flag = false
+          obj.style[key] = next + 'px'
+        }
+        // 定义一个关闭定时器的临界点 
+        if (flag) {
+          clearInterval(obj.timer)
+          callback && callback()
+          return
+        }
+          }
+      },20)
+    }
+  </script>
+</body>
+</html>

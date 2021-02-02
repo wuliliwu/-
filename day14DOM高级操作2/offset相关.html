@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box1 {
+      width: 300px;
+      height: 300px;
+      margin: 50px;
+      position: relative;
+      background-color: pink;
+    }
+
+    .box2 {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      margin-left: 60px;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      background-color: rgb(255, 0, 43);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1">
+    1
+    <div class="box2">
+      2
+    </div>
+  </div>
+  <script>
+    var box1 = document.querySelector('.box1')
+    var box2 = document.querySelector('.box2')
+    box2.onclick = function (e) {
+      console.log(e.offsetX);
+      console.log(box2.offsetLeft);
+      console.log(getLeftTop(box2).left);
+    }
+
+    function getLeftTop(obj) {
+      // 声明一个变量来存储拿到的left和top
+      var distance = {
+        left: 0,
+        top: 0
+      }
+      while (true) {
+        distance.left = distance.left + obj.offsetLeft
+        distance.top = distance.top + obj.offsetTop
+        obj = obj.offsetParent
+        if (obj.nodeName == 'BODY') {
+          return distance
+        }
+      }
+    }
+
+//        box.timer=setInterval(function(){
+//          var aq=box.style.left
+//          console.log();
+//             if (box.style.left==-1200) {
+//                 box.style.left=0
+//             } else{
+//                 box.style.left=(box.style.left-5)+"px"
+//             }
+//         },10)
+  </script>
+</body>
+
+</html>
